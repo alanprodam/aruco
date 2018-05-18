@@ -81,7 +81,7 @@ int main(int argc, char** argv)
         string TheInputVideo=string(argv[1]);
         if ( TheInputVideo.find( "live")!=std::string::npos)
         {
-            int vIdx = 0;
+            int vIdx = 1;
             // check if the :idx is here
             char cad[100];
             if (TheInputVideo.find(":") != string::npos)
@@ -105,8 +105,8 @@ int main(int argc, char** argv)
         }
         TheVideoCapturer.set(CV_CAP_PROP_FOURCC ,CV_FOURCC('M', 'J', 'P', 'G') );
         TheVideoCapturer.set(CV_CAP_PROP_AUTOFOCUS,0);
-        TheVideoCapturer.set(CV_CAP_PROP_FRAME_WIDTH,1280);
-        TheVideoCapturer.set(CV_CAP_PROP_FRAME_HEIGHT,720);
+        TheVideoCapturer.set(CV_CAP_PROP_FRAME_WIDTH,640);
+        TheVideoCapturer.set(CV_CAP_PROP_FRAME_HEIGHT,480);
         bool saveImages=cml["-save"];
         // read first image to get the dimensions
         TheVideoCapturer >> TheInputImage;
@@ -134,9 +134,9 @@ int main(int argc, char** argv)
                 m.draw(TheInputImage, Scalar(0, 0, 255), 1);
 
             // draw help
-            cv::putText(TheInputImage,"'a' add current image for calibration",cv::Point(10,20),FONT_HERSHEY_SIMPLEX, 0.5f,cv::Scalar(125,255,255),1);
-            cv::putText(TheInputImage,"'s' start/stop capture",cv::Point(10,40),FONT_HERSHEY_SIMPLEX, 0.5f,cv::Scalar(125,255,255),1);
-            cv::putText(TheInputImage,calibrator.getInfo(),cv::Point(10,60),FONT_HERSHEY_SIMPLEX, 0.5f,cv::Scalar(125,255,255),1);
+            cv::putText(TheInputImage,"'a' add current image for calibration",cv::Point(10,20),FONT_HERSHEY_SIMPLEX, 0.5f,cv::Scalar(125,255,255),2);
+            cv::putText(TheInputImage,"'s' start/stop capture",cv::Point(10,40),FONT_HERSHEY_SIMPLEX, 0.5f,cv::Scalar(125,255,255),2);
+            cv::putText(TheInputImage,calibrator.getInfo(),cv::Point(10,60),FONT_HERSHEY_SIMPLEX, 0.5f,cv::Scalar(125,255,255),2);
             cv::imshow("in", TheInputImage);
 
              key = cv::waitKey(waitKeyTime);   // wait for key to be pressed

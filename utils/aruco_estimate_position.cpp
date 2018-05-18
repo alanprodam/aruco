@@ -28,11 +28,11 @@ int main(int argc, char **argv)
     Detector.setDetectionMode(aruco::DM_FAST);
 
     // configuration of aruco detector with library MIP_36h12 / second parameter is Minimum Marker Size to increse speed
-    Detector.setDictionary("/home/alantavares/aruco/utils/myconnect.dict");
+    Detector.setDictionary("ARUCO_MIP_36h12");
 
     // get camera parameters from xml file
     aruco::CameraParameters camera;
-    camera.readFromXMLFile("/home/alantavares/aruco/utils/calibration_1920x1080.yml");
+    camera.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/camera_result_4_image.yml");
 
     // selecting the best parameters for your problem
     //Detector.loadParamsFromFile("arucoConfig.yml");
@@ -76,6 +76,7 @@ int main(int argc, char **argv)
                 
                 //cout << "rotation x: " << cvRound(markers[i].Rvec.ptr<float>(0)[i]) << " y: " << cvRound(markers[i].Rvec.ptr<float>(0)[i]) << " z: " << cvRound(markers[i].Rvec.ptr<float>(0)[i])
                 //     << " | translation x: " << cvRound(markers[i].Tvec.ptr<float>(0)[i]) << " y : " << cvRound(markers[i].Tvec.ptr<float>(0)[i]) << " z : " << cvRound(markers[i].Tvec.ptr<float>(0)[i]) << endl;
+                CvDrawingUtils::draw3dCube(frame, markers[i], camera);
                 putText(frame, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
             }
         }
