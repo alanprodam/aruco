@@ -28,14 +28,14 @@ int main(int argc, char **argv)
     Detector.setDetectionMode(aruco::DM_FAST);
 
     // configuration of aruco detector with library MIP_36h12 / second parameter is Minimum Marker Size to increse speed
-    Detector.setDictionary("/home/alantavares/aruco-3.0.10/build/utils/myconnect.dict");
+    Detector.setDictionary("/home/alantavares/aruco/utils/myconnect.dict");
 
     // get camera parameters from xml file
     aruco::CameraParameters camera;
-    camera.readFromXMLFile("/home/alantavares/aruco-3.0.6/build/utils/calibration_1920x1080.yml");
+    camera.readFromXMLFile("/home/alantavares/aruco/utils/calibration_1920x1080.yml");
 
     // selecting the best parameters for your problem
-    Detector.loadParamsFromFile("arucoConfig.yml");
+    //Detector.loadParamsFromFile("arucoConfig.yml");
 
     // create image frame of video of type Mat
     Mat frame, TheInputImageCopy;
