@@ -43,13 +43,13 @@ using namespace aruco;
 // const int FRAME_WIDTH = 1280;
 // const int FRAME_HEIGHT = 720;
 
-const int FRAME_WIDTH = 800;
-const int FRAME_HEIGHT = 600;
+const int FRAME_WIDTH = 640;
+const int FRAME_HEIGHT = 480;
 
 MarkerDetector MDetector;
 VideoCapture TheVideoCapturer;
 vector<Marker> TheMarkers;
-Mat TheInputImage,TheInputImageGrey, TheInputImageCopy;
+Mat TheInputImage, TheInputImageGrey, TheInputImageCopy;
 CameraParameters TheCameraParameters;
 void cvTackBarEvents(int pos, void*);
 string dictionaryString;
@@ -99,8 +99,8 @@ void createMenu(){
    cv::createTrackbar("ErrorRate", "menu", &iCorrectionRate, 10, cvTackBarEvents);
    cv::createTrackbar("Enclosed", "menu", &iEnclosed, 1, cvTackBarEvents);
    cv::createTrackbar("ShowAll", "menu", &iShowAllCandidates, 1, cvTackBarEvents);
-   iThreshold=MDetector.getParameters().ThresHold;
-   iCornerMode= MDetector.getParameters().cornerRefinementM;
+   iThreshold = MDetector.getParameters().ThresHold;
+   iCornerMode = MDetector.getParameters().cornerRefinementM;
 }
 
 void putText(cv::Mat &im,string text,cv::Point p,float size){
@@ -226,8 +226,10 @@ int main(int argc, char** argv)
         TheVideoCapturer >> TheInputImage;
         if (TheCameraParameters.isValid())
             TheCameraParameters.resize(TheInputImage.size());
+
         dictionaryString=cml("-d", "ALL_DICTS");
         iDictionaryIndex=(uint64_t)aruco::Dictionary::getTypeFromString(dictionaryString);
+
          MDetector.setDictionary(dictionaryString,float(iCorrectionRate)/10. );  // sets the dictionary to be employed (ARUCO,APRILTAGS,ARTOOLKIT,etc)
          iThreshold=MDetector.getParameters().ThresHold;
          iCornerMode= MDetector.getParameters().cornerRefinementM;
@@ -274,13 +276,12 @@ int main(int argc, char** argv)
             {
                 cout << " Translate [" << TheMarkers[i].id << "]: " << 
                 	"x: " << TheMarkers[i].Tvec.ptr<float>(0)[i] <<
-                	"y: " << TheMarkers[i].Tvec.ptr<float>(1)[i] <<
-                	"z: " << TheMarkers[i].Tvec.ptr<float>(2)[i] << endl;
+                	"\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[i] <<
+                	"\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[i] << endl;
                 
 
                 TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255),2,true);
-
-
+                
                 putText(TheInputImageCopy, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
             }
 

@@ -1,105 +1,174 @@
-#include "aruco.h"
-#include <opencv2/flann.hpp>
-#include <opencv2/core.hpp>
-#include "opencv2/video/tracking.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/highgui/highgui.hpp"
-
-#include <vector>
+#include "cvdrawingutils.h"
+#include <fstream>
 #include <iostream>
-#include <cmath>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 #include <sstream>
 #include <string>
+#include <stdexcept>
 
 using namespace std;
 using namespace cv;
 using namespace aruco;
 
-//default capture width and height
+// default capture width and height
 const int FRAME_WIDTH = 640;
 const int FRAME_HEIGHT = 480;
 
-int main(int argc, char **argv)
-{
-    // create the detector o set parameters 
-    MarkerDetector Detector;
 
-    // DM_NORMAL - DM_VIDEO_FAST - DM_FAST(the best)
-    Detector.setDetectionMode(aruco::DM_FAST);
+// create the detector o set parameters 
+MarkerDetector MDetector;
+// video capture
+VideoCapture TheVideoCapturer;
+// Create the vector marker to set the parameters of The Markers
+vector<Marker> TheMarkers;
+// create image frame of video of type Mat
+Mat TheInputImage, TheInputImageCopy;
+// create the camera parameters to set ArUrco
+CameraParameters TheCameraParameters;
 
-    // configuration of aruco detector with library MIP_36h12 / second parameter is Minimum Marker Size to increse speed
-    Detector.setDictionary("/home/alantavares/aruco/utils/myconnect.dict");
 
-    // get camera parameters from xml file
-    aruco::CameraParameters camera;
-    camera.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/camera_result_4_image.yml");
+// parameters of ArUrco MarkerSize
+int iDetectMode = 0,iMinMarkerSize = 0;
+int iCornerMode;
+int iThreshold;
+int iCorrectionRate = 0;
+int iDictionaryIndex = 0;
 
-    // selecting the best parameters for your problem
-    Detector.loadParamsFromFile("/home/alantavares/aruco/utils/arucoConfig.yml");
+bool isVideo=false;
 
-    // create image frame of video of type Mat
-    Mat frame, TheInputImageCopy;
+void setParamsFromGlobalVariables(MarkerDetector &md){
 
-    // set detect the marker size that is 0.326
-    float MarkerSize = 0.37f;
 
-    // video capture
-    VideoCapture vcap;
-    vcap.open(1);
-    //vcap.open("/home/alantavares/aruco-3.0.6/build/utils/datasets/dataset_high_resolution_stable.mp4");
+    md.setDetectionMode((DetectionMode)iDetectMode,float(iMinMarkerSize)/1000.);
+    md.getParameters().setCornerRefinementMethod((CornerRefinementMethod) iCornerMode);
 
-    //set height and width of capture frame
-    vcap.set(CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH);
-    vcap.set(CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT);
-
-    while (vcap.grab())
-    {   
-        // capture frame
-        //vcap.retrieve(frame);
-        vcap.read(frame);
-        camera.resize(frame.size());
-
-        // detection with frame, parameters of camera e marker size
-        auto markers = Detector.detect(frame, camera, MarkerSize);
-
-        // for each marker, draw info and its boundaries in the image
-        for (unsigned int i = 0; i < markers.size(); i++)
-        {
-            //cout << Markers[i].id << endl;
-            if (markers[i].id == 231)
-            {
-                markers[i].draw(frame, Scalar(0, 0, 255), 5);
-                CvDrawingUtils::draw3dAxis(frame, markers[i], camera);
-
-                //cout << "rotation " << 57.29f*markers [i].Rvec << endl;
-                cout << " translate" << markers[i].Tvec << endl;
-                
-                //cout << "rotation x: " << cvRound(markers[i].Rvec.ptr<float>(0)[i]) << " y: " << cvRound(markers[i].Rvec.ptr<float>(0)[i]) << " z: " << cvRound(markers[i].Rvec.ptr<float>(0)[i])
-                //     << " | translation x: " << cvRound(markers[i].Tvec.ptr<float>(0)[i]) << " y : " << cvRound(markers[i].Tvec.ptr<float>(0)[i]) << " z : " << cvRound(markers[i].Tvec.ptr<float>(0)[i]) << endl;
-                CvDrawingUtils::draw3dCube(frame, markers[i], camera);
-                putText(frame, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
-            }
-        }
-
-        // show outputs with frame argumented information
-        namedWindow("Video Aruco", CV_WINDOW_NORMAL);
-        imshow("Video Aruco", frame);
-        resizeWindow("Video Aruco", frame.cols * 1.5, frame.rows * 1.5);
-
-        // print marker info and draw the markers in image
-        frame.copyTo(TheInputImageCopy);
-        TheInputImageCopy = Detector.getThresholdedImage();
-
-        // show outputs with ThresholdedImage argumented information
-        namedWindow("Video thres", CV_WINDOW_NORMAL);
-        imshow("Video thres", TheInputImageCopy);
-        resizeWindow("Video thres", TheInputImageCopy.cols * 1.5, TheInputImageCopy.rows * 1.5);
-
-        //cout << " size" << frame.cols << "x" << frame.rows << endl;
-
-        waitKey(5);
-        //while(char (waitKey(0)) != 27); // wait for esc to be pressed
+    md.getParameters().ThresHold = iThreshold;
+    if(Dictionary::getTypeFromString( md.getParameters().dictionary) != Dictionary::CUSTOM){
+        md.setDictionary((Dictionary::DICT_TYPES) iDictionaryIndex,float(iCorrectionRate)/10. );  // sets the dictionary to be employed (ARUCO,APRILTAGS,ARTOOLKIT,etc)
     }
+}
 
+void printMenuInfo(){
+        cv::Mat image(200,400,CV_8UC3);
+        image=cv::Scalar::all(255);
+        string str="Dictionary="+aruco::Dictionary::getTypeString((aruco::Dictionary::DICT_TYPES) iDictionaryIndex) ;
+
+        cv::putText(image,str,cv::Size(10,20),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
+
+        str="Detection Mode="+MarkerDetector::Params::toString(MDetector.getParameters().detectMode);
+        cv::putText(image,str,cv::Size(10,40),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
+        str="Corner Mode="+MarkerDetector::Params::toString(MDetector.getParameters().cornerRefinementM);;
+        cv::putText(image,str,cv::Size(10,60),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
+        cv::imshow("menu",image);
+}
+
+int main(int argc, char** argv)
+{
+
+    try
+    {
+        
+        //setParamsFromGlobalVariables(MDetector);
+
+        // DM_NORMAL - DM_VIDEO_FAST - DM_FAST(the best)
+        //MDetector.setDetectionMode(DM_FAST);
+        //MDetector.getParameters().setCornerRefinementMethod((CornerRefinementMethod) iCornerMode);
+        //MDetector.getParameters().ThresHold = iThreshold;
+
+        // configuration of aruco detector with library MIP_36h12 / second parameter is Minimum Marker Size to increse speed
+        //MDetector.setDictionary("/home/alantavares/aruco/utils/myconnect.dict");
+
+        // Read camera calibration data from xml file
+        TheCameraParameters.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/camera_result_4_image.yml");
+        if (!TheCameraParameters.isValid()) {
+            cerr << "Calibration Parameters not valid" << endl;
+            return -1;
+        }   
+
+        // selecting the best parameters for your problem
+        MDetector.loadParamsFromFile("/home/alantavares/aruco/utils/arucoConfig.yml");
+
+        // set detect the marker size that is 0.326
+        float MarkerSize = 0.095f;
+
+        
+        TheVideoCapturer.open(1);
+        //TheVideoCapturer.open("/home/alantavares/aruco-3.0.6/build/utils/datasets/dataset_high_resolution_stable.mp4");
+
+        double inputbrightness = 0.5;
+
+        // inputbrightness pattern is 10 
+        cout << " brilho " << CAP_PROP_BRIGHTNESS << endl;
+
+        // check video is open
+        if (TheVideoCapturer.isOpened()){
+            //set height and width of capture frame
+            TheVideoCapturer.set(CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH);
+            TheVideoCapturer.set(CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT);
+            TheVideoCapturer.set(CAP_PROP_BRIGHTNESS, inputbrightness);
+        } else{
+                throw std::runtime_error("*****Could not open video*****");
+        }
+        
+        while (true)
+        {          
+            // capture frame
+            //TheVideoCapturer.retrieve(frame);
+            TheVideoCapturer >> TheInputImage;
+
+            if (TheCameraParameters.isValid()){
+                TheCameraParameters.resize(TheInputImage.size());
+            } 
+
+            // detection with frame, parameters of camera e marker size
+            TheMarkers = MDetector.detect(TheInputImage, TheCameraParameters, MarkerSize);
+
+            // for each marker, draw info and its boundaries in the image
+            for (unsigned int i = 0; i < TheMarkers.size(); i++)
+            {
+                if (TheMarkers[i].id == 1)
+                {
+                    CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
+
+                    TheMarkers[i].draw(TheInputImage, Scalar(0, 0, 255),2,true);
+
+                    cout << " Translate [" << TheMarkers[i].id << "]: " << 
+                        "  x: " << TheMarkers[i].Tvec.ptr<float>(0)[i] <<
+                        "\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[i] <<
+                        "\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[i] << endl;
+
+                    //vector<Marker> vec = TheMarkers[i].Tvec;
+                
+                    // cout << " Translate [" << TheMarkers[i].id << "]: " << TheMarkers[i].Tvec << endl;
+
+                    // CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
+                    putText(TheInputImage, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
+                }
+
+                //cout << " Translate [" << TheMarkers[i].id << "]: " << TheMarkers[i] << endl;
+            }
+
+            // show outputs with frame argumented information
+            namedWindow("Video Aruco", CV_WINDOW_NORMAL);
+            imshow("Video Aruco", TheInputImage);
+            moveWindow("Video Aruco", 2000, 100);
+            resizeWindow("Video Aruco", TheInputImage.cols * 1, TheInputImage.rows * 1);
+
+            // print marker info and draw the markers in image
+            TheInputImage.copyTo(TheInputImageCopy);
+            TheInputImageCopy = MDetector.getThresholdedImage();
+
+            // show outputs with ThresholdedImage argumented information
+            namedWindow("Video thres", CV_WINDOW_NORMAL);
+            imshow("Video thres", TheInputImageCopy);
+            resizeWindow("Video thres", TheInputImageCopy.cols * 1.5, TheInputImageCopy.rows * 1.5);
+
+            //cout << " size" << frame.cols << "x" << frame.rows << endl;
+            waitKey(100);         
+        }
+    }catch(std::exception& ex){
+        cout << "Exception :" << ex.what() << endl;
+    }
     return 0;
 }
