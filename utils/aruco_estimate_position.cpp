@@ -50,17 +50,16 @@ void setParamsFromGlobalVariables(MarkerDetector &md){
 }
 
 void printMenuInfo(){
-        cv::Mat image(200,400,CV_8UC3);
-        image=cv::Scalar::all(255);
-        string str="Dictionary="+aruco::Dictionary::getTypeString((aruco::Dictionary::DICT_TYPES) iDictionaryIndex) ;
+        
+        cout << "Dictionary= " << aruco::Dictionary::getTypeString((aruco::Dictionary::DICT_TYPES) iDictionaryIndex) << endl;
 
-        cv::putText(image,str,cv::Size(10,20),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
+        // cv::putText(image,str,cv::Size(10,20),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
 
-        str="Detection Mode="+MarkerDetector::Params::toString(MDetector.getParameters().detectMode);
-        cv::putText(image,str,cv::Size(10,40),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
-        str="Corner Mode="+MarkerDetector::Params::toString(MDetector.getParameters().cornerRefinementM);;
-        cv::putText(image,str,cv::Size(10,60),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
-        cv::imshow("menu",image);
+        // str="Detection Mode="+MarkerDetector::Params::toString(MDetector.getParameters().detectMode);
+        // cv::putText(image,str,cv::Size(10,40),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
+        // str="Corner Mode="+MarkerDetector::Params::toString(MDetector.getParameters().cornerRefinementM);;
+        // cv::putText(image,str,cv::Size(10,60),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
+        // cv::imshow("menu",image);
 }
 
 int main(int argc, char** argv)
@@ -81,6 +80,7 @@ int main(int argc, char** argv)
 
         // Read camera calibration data from xml file
         TheCameraParameters.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/camera_result_4_image.yml");
+
         if (!TheCameraParameters.isValid()) {
             cerr << "Calibration Parameters not valid" << endl;
             return -1;
@@ -96,20 +96,16 @@ int main(int argc, char** argv)
         TheVideoCapturer.open(1);
         //TheVideoCapturer.open("/home/alantavares/aruco-3.0.6/build/utils/datasets/dataset_high_resolution_stable.mp4");
 
-        double inputbrightness = 0.5;
-
-        // inputbrightness pattern is 10 
-        cout << " brilho " << CAP_PROP_BRIGHTNESS << endl;
-
         // check video is open
         if (TheVideoCapturer.isOpened()){
             //set height and width of capture frame
             TheVideoCapturer.set(CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH);
             TheVideoCapturer.set(CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT);
-            TheVideoCapturer.set(CAP_PROP_BRIGHTNESS, inputbrightness);
         } else{
                 throw std::runtime_error("*****Could not open video*****");
         }
+
+        printMenuInfo();
         
         while (true)
         {          
