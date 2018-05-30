@@ -123,12 +123,19 @@ void printHelp(cv::Mat &im)
 }
 
 void printInfo(cv::Mat &im){
-    float fs=float(im.cols)/float(1000);
-    //putText(im,"fps=" + to_string(1./Fps.getAvrg()),cv::Point(10,fs*20),fs*0.5f);
-    //putText(im, " Translate [" + to_string(TheMarkers[1].id) + "]: ", cv::Point(10,fs*20), fs*0.5f);
-    //putText(im,"size" + to_string(im.cols) + "x" + to_string(im.rows),cv::Point(10,fs*40),fs*0.5f);
+    float fs = float(im.cols)/float(1000);
+    putText(im,"fps = " + to_string(1./Fps.getAvrg()),Point(10,fs*30),1.5, 1.5, Scalar(255, 150, 0), 2.2);
+    putText(im,"Size Image: " + to_string(im.cols) + "x" + to_string(im.rows),Point(10,fs*60),1.5, 1.5, Scalar(255, 150, 0), 2.2);
+    putText(im, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.5, 1.5, Scalar(0, 0, 255), 2);
     //putText(im,"'h': show/hide help",cv::Point(10,fs*60),fs*0.5f);
-    //if(bPrintHelp) printHelp(im);
+
+         // putText(TheInputImageCopy, " Translate [" + to_string(TheMarkers[i].id) + "]: " 
+                    //                                         + " x: " + to_string(TheMarkers[i].Tvec.ptr<float>(0)[0]) + "m "
+                    //                                         + " y: " + to_string(TheMarkers[i].Tvec.ptr<float>(1)[1]) + "m )"
+                    //                                         + " z: " + to_string(TheMarkers[i].Tvec.ptr<float>(2)[2]) + "m )",
+                    //                                         Point(10, 80), 1.2, 1.2, Scalar(0, 255, 0), 2);
+
+    if(bPrintHelp) printHelp(im);
 }
 
 void printMenuInfo(){
@@ -151,7 +158,7 @@ cv::Mat resizeImage(cv::Mat &in,float resizeFactor){
     float nr=float(in.rows)*resizeFactor;
     cv::Mat imres;
     cv::resize(in,imres,cv::Size(nc,nr));
-    cout<<"Imagesize="<<imres.size()<<endl;
+    //cout<<"Imagesize = "<<imres.size()<<endl;
     return imres;
 }
 /************************************
@@ -235,6 +242,8 @@ int main(int argc, char** argv)
          iThreshold=MDetector.getParameters().ThresHold;
          iCornerMode= MDetector.getParameters().cornerRefinementM;
 
+         //cout << "**********" << float(iCorrectionRate)/10. << endl;
+
         cv::namedWindow("in",cv::WINDOW_NORMAL);
         cv::resizeWindow("in",640,480);
 
@@ -250,7 +259,6 @@ int main(int argc, char** argv)
         char key = 0;
         int index = 0,indexSave=0;
         // capture until press ESC or until the end of the video
-
          do
         {
 
@@ -275,26 +283,16 @@ int main(int argc, char** argv)
 
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                // cout << " Translate [" << TheMarkers[i].id << "]: " << 
-                // 	"x: " << TheMarkers[i].Tvec.ptr<float>(0)[i] <<
-                // 	"\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[i] <<
-                // 	"\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[i] << endl;
-                
-                cout << " Translate [" << TheMarkers[i].id << "]: " << TheMarkers[i].Tvec << endl;
+                printInfo(TheInputImageCopy);
+                if (TheMarkers.size() == 2 ){
+                    
+                    TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255),2,true);
 
-                TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255),2,true);
+                    cout << " Translate [" << TheMarkers[i].id << "]: " <<
+                        "  x: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
+                        "\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
+                        "\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
 
-                //float fs = float(TheInputImageCopy.cols)/float(1000);
-                //putText(im,"fps=" + to_string(1./Fps.getAvrg()),cv::Point(10,fs*20),fs*0.5f);
-                if (TheMarkers[i].id == 313){
-                    putText(TheInputImageCopy, " Translate [" + to_string(TheMarkers[i].id) + "]: " 
-                                                            + " x: " + to_string(TheMarkers[i].Tvec.ptr<float>(0)[i]) + "mm "
-                                                            + " y: " + to_string(TheMarkers[i].Tvec.ptr<float>(1)[i]) + "mm )"
-                                                            + " z: " + to_string(TheMarkers[i].Tvec.ptr<float>(2)[i]) + "mm )",
-                                                            Point(10, 80), 1.2, 1.2, Scalar(0, 255, 0), 2);
-
-                    //putText(TheInputImageCopy,"size" + to_string(TheInputImageCopy.cols) + "x" + to_string(TheInputImageCopy.rows),cv::Point(10,fs*40),fs*0.5f);
-                    putText(TheInputImageCopy, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
                 }
             }
 
@@ -302,8 +300,8 @@ int main(int argc, char** argv)
             if (TheCameraParameters.isValid() && TheMarkerSize > 0)
                 for (unsigned int i = 0; i < TheMarkers.size(); i++)
                 {
-                    //CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
-                    //CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
+                    CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
+                    CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
                 }
 
             // DONE! Easy, right?
@@ -349,7 +347,7 @@ int main(int argc, char** argv)
                     Fps.stop();
                     // chekc the speed by calculating the mean speed of all iterations
                 }
-                //printInfo(TheInputImageCopy);
+                printInfo(TheInputImageCopy);
             }
             if(key=='f'){
                 cerr<<"Configuration saved to arucoConfig.yml"<<endl;

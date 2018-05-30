@@ -49,17 +49,17 @@ void setParamsFromGlobalVariables(MarkerDetector &md){
     }
 }
 
-void printMenuInfo(){
-        
-        cout << "Dictionary= " << aruco::Dictionary::getTypeString((aruco::Dictionary::DICT_TYPES) iDictionaryIndex) << endl;
+void printMenuInfo(Mat &im){
 
-        // cv::putText(image,str,cv::Size(10,20),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
+    // putText(im, 
+    //     " Translate [" + to_string(TheMarkers[i].id) + "]: " 
+    //     + " x: " + to_string(TheMarkers[i].Tvec.ptr<float>(0)[i]) + "mm "
+    //     + " y: " + to_string(TheMarkers[i].Tvec.ptr<float>(1)[i]) + "mm )"
+    //     + " z: " + to_string(TheMarkers[i].Tvec.ptr<float>(2)[i]) + "mm )",
+    //     Point(10, 80), 1.2, 1.2, Scalar(0, 255, 0), 2);
 
-        // str="Detection Mode="+MarkerDetector::Params::toString(MDetector.getParameters().detectMode);
-        // cv::putText(image,str,cv::Size(10,40),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
-        // str="Corner Mode="+MarkerDetector::Params::toString(MDetector.getParameters().cornerRefinementM);;
-        // cv::putText(image,str,cv::Size(10,60),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
-        // cv::imshow("menu",image);
+    //putText(im,"size" + to_string(im.cols) + "x" + to_string(im.rows),cv::Point(10,fs*40),fs*0.5f);
+    putText(im, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
 }
 
 int main(int argc, char** argv)
@@ -100,12 +100,21 @@ int main(int argc, char** argv)
             //set height and width of capture frame
             TheVideoCapturer.set(CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH);
             TheVideoCapturer.set(CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT);
+            
+            isVideo = true;
+
         } else{
                 throw std::runtime_error("*****Could not open video*****");
         }
 
-        cout << "Dictionary= " << aruco::Dictionary::getTypeString((aruco::Dictionary::DICT_TYPES) iDictionaryIndex) << endl;
+        iDictionaryIndex = Dictionary::getTypeFromString( MDetector.getParameters().dictionary );
+        cout << "iDictionaryIndex Current = " << Dictionary::getTypeString((aruco::Dictionary::DICT_TYPES) iDictionaryIndex) << endl;
         
+        iThreshold = MDetector.getParameters().ThresHold;
+        cout << "iThreshold Current = " << iThreshold << endl;
+        iCornerMode = MDetector.getParameters().cornerRefinementM;
+        cout << "iCornerMode Current = " << iCornerMode << endl;
+
         while (true)
         {          
             // capture frame
@@ -115,37 +124,35 @@ int main(int argc, char** argv)
             TheVideoCapturer >> TheInputImage;
             if (TheCameraParameters.isValid()){
                 TheCameraParameters.resize(TheInputImage.size());
-            } 
+            }
 
             // detection with frame, parameters of camera e marker size
             TheMarkers = MDetector.detect(TheInputImage, TheCameraParameters, MarkerSize);
 
+
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                //if (TheMarkers[i].id == 0)
-                {
-                    CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
-
+                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 1){
+                    
                     TheMarkers[i].draw(TheInputImage, Scalar(0, 0, 255),2,true);
 
-                    // cout << " Translate [" << TheMarkers[i].id << "]: " << 
-                    //     "  x: " << TheMarkers[i].Tvec.ptr<float>(0)[i] <<
-                    //     "\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[i] <<
-                    //     "\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[i] << endl;
-                
-                    cout << " Translate [" << TheMarkers[i].id << "]: " << TheMarkers[i].Tvec << endl;
+                    cout << " Translate [" << TheMarkers[i].id << "]: " <<
+                        "  x: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
+                        "\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
+                        "\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
 
-                    // CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
-                    putText(TheInputImage, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
+                    //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
+                    CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
                 }
             }
 
             // show outputs with frame argumented information
             namedWindow("Video Aruco", CV_WINDOW_NORMAL);
             imshow("Video Aruco", TheInputImage);
+            resizeWindow("Video Aruco", 640,480);
+            //resizeWindow("Video Aruco", TheInputImage.cols * 1.5, TheInputImage.rows * 1.5);
             //moveWindow("Video Aruco", 2000, 100);
-            resizeWindow("Video Aruco", TheInputImage.cols * 1, TheInputImage.rows * 1);
 
             // print marker info and draw the markers in image
             TheInputImage.copyTo(TheInputImageCopy);
@@ -154,10 +161,12 @@ int main(int argc, char** argv)
             // show outputs with ThresholdedImage argumented information
             namedWindow("Video thres", CV_WINDOW_NORMAL);
             imshow("Video thres", TheInputImageCopy);
-            resizeWindow("Video thres", TheInputImageCopy.cols * 1.5, TheInputImageCopy.rows * 1.5);
+            resizeWindow("Video thres", 640,480);
+            //resizeWindow("Video thres", TheInputImageCopy.cols * 1.5, TheInputImageCopy.rows * 1.5);
+            //moveWindow("Video Aruco", 2000+100, 100);
 
             //cout << " size" << frame.cols << "x" << frame.rows << endl;
-            waitKey(100);         
+            waitKey(1);         
         }
     }catch(std::exception& ex){
         cout << "Exception :" << ex.what() << endl;
