@@ -92,7 +92,6 @@ int main(int argc, char** argv)
         // set detect the marker size that is 0.326
         float MarkerSize = 0.095f;
 
-        
         TheVideoCapturer.open(1);
         //TheVideoCapturer.open("/home/alantavares/aruco-3.0.6/build/utils/datasets/dataset_high_resolution_stable.mp4");
 
@@ -105,14 +104,15 @@ int main(int argc, char** argv)
                 throw std::runtime_error("*****Could not open video*****");
         }
 
-        printMenuInfo();
+        cout << "Dictionary= " << aruco::Dictionary::getTypeString((aruco::Dictionary::DICT_TYPES) iDictionaryIndex) << endl;
         
         while (true)
         {          
             // capture frame
             //TheVideoCapturer.retrieve(frame);
-            TheVideoCapturer >> TheInputImage;
 
+            // read first image to get the dimensions
+            TheVideoCapturer >> TheInputImage;
             if (TheCameraParameters.isValid()){
                 TheCameraParameters.resize(TheInputImage.size());
             } 
@@ -123,32 +123,28 @@ int main(int argc, char** argv)
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                if (TheMarkers[i].id == 1)
+                //if (TheMarkers[i].id == 0)
                 {
                     CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
 
                     TheMarkers[i].draw(TheInputImage, Scalar(0, 0, 255),2,true);
 
-                    cout << " Translate [" << TheMarkers[i].id << "]: " << 
-                        "  x: " << TheMarkers[i].Tvec.ptr<float>(0)[i] <<
-                        "\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[i] <<
-                        "\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[i] << endl;
-
-                    //vector<Marker> vec = TheMarkers[i].Tvec;
+                    // cout << " Translate [" << TheMarkers[i].id << "]: " << 
+                    //     "  x: " << TheMarkers[i].Tvec.ptr<float>(0)[i] <<
+                    //     "\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[i] <<
+                    //     "\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[i] << endl;
                 
-                    // cout << " Translate [" << TheMarkers[i].id << "]: " << TheMarkers[i].Tvec << endl;
+                    cout << " Translate [" << TheMarkers[i].id << "]: " << TheMarkers[i].Tvec << endl;
 
                     // CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
                     putText(TheInputImage, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
                 }
-
-                //cout << " Translate [" << TheMarkers[i].id << "]: " << TheMarkers[i] << endl;
             }
 
             // show outputs with frame argumented information
             namedWindow("Video Aruco", CV_WINDOW_NORMAL);
             imshow("Video Aruco", TheInputImage);
-            moveWindow("Video Aruco", 2000, 100);
+            //moveWindow("Video Aruco", 2000, 100);
             resizeWindow("Video Aruco", TheInputImage.cols * 1, TheInputImage.rows * 1);
 
             // print marker info and draw the markers in image

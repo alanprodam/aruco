@@ -123,11 +123,12 @@ void printHelp(cv::Mat &im)
 }
 
 void printInfo(cv::Mat &im){
-    float fs=float(im.cols)/float(1200);
-    putText(im,"fps=" + to_string(1./Fps.getAvrg()),cv::Point(10,fs*20),fs*0.5f);
-    putText(im,"size" + to_string(im.cols) + "x" + to_string(im.rows),cv::Point(10,fs*40),fs*0.5f);
-    putText(im,"'h': show/hide help",cv::Point(10,fs*60),fs*0.5f);
-    if(bPrintHelp) printHelp(im);
+    float fs=float(im.cols)/float(1000);
+    //putText(im,"fps=" + to_string(1./Fps.getAvrg()),cv::Point(10,fs*20),fs*0.5f);
+    //putText(im, " Translate [" + to_string(TheMarkers[1].id) + "]: ", cv::Point(10,fs*20), fs*0.5f);
+    //putText(im,"size" + to_string(im.cols) + "x" + to_string(im.rows),cv::Point(10,fs*40),fs*0.5f);
+    //putText(im,"'h': show/hide help",cv::Point(10,fs*60),fs*0.5f);
+    //if(bPrintHelp) printHelp(im);
 }
 
 void printMenuInfo(){
@@ -274,15 +275,27 @@ int main(int argc, char** argv)
 
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                cout << " Translate [" << TheMarkers[i].id << "]: " << 
-                	"x: " << TheMarkers[i].Tvec.ptr<float>(0)[i] <<
-                	"\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[i] <<
-                	"\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[i] << endl;
+                // cout << " Translate [" << TheMarkers[i].id << "]: " << 
+                // 	"x: " << TheMarkers[i].Tvec.ptr<float>(0)[i] <<
+                // 	"\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[i] <<
+                // 	"\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[i] << endl;
                 
+                cout << " Translate [" << TheMarkers[i].id << "]: " << TheMarkers[i].Tvec << endl;
 
                 TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255),2,true);
-                
-                putText(TheInputImageCopy, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
+
+                //float fs = float(TheInputImageCopy.cols)/float(1000);
+                //putText(im,"fps=" + to_string(1./Fps.getAvrg()),cv::Point(10,fs*20),fs*0.5f);
+                if (TheMarkers[i].id == 313){
+                    putText(TheInputImageCopy, " Translate [" + to_string(TheMarkers[i].id) + "]: " 
+                                                            + " x: " + to_string(TheMarkers[i].Tvec.ptr<float>(0)[i]) + "mm "
+                                                            + " y: " + to_string(TheMarkers[i].Tvec.ptr<float>(1)[i]) + "mm )"
+                                                            + " z: " + to_string(TheMarkers[i].Tvec.ptr<float>(2)[i]) + "mm )",
+                                                            Point(10, 80), 1.2, 1.2, Scalar(0, 255, 0), 2);
+
+                    //putText(TheInputImageCopy,"size" + to_string(TheInputImageCopy.cols) + "x" + to_string(TheInputImageCopy.rows),cv::Point(10,fs*40),fs*0.5f);
+                    putText(TheInputImageCopy, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
+                }
             }
 
             // draw a 3d cube in each marker if there is 3d info
@@ -294,8 +307,7 @@ int main(int argc, char** argv)
                 }
 
             // DONE! Easy, right?
-            // show input with augmented information and  the thresholded image
-            printInfo(TheInputImageCopy);
+            
             if(showMennu)printMenuInfo();
             cv::imshow("thres", resize(MDetector.getThresholdedImage(), 1024));
             cv::imshow("in", TheInputImageCopy);
@@ -337,7 +349,7 @@ int main(int argc, char** argv)
                     Fps.stop();
                     // chekc the speed by calculating the mean speed of all iterations
                 }
-                printInfo(TheInputImageCopy);
+                //printInfo(TheInputImageCopy);
             }
             if(key=='f'){
                 cerr<<"Configuration saved to arucoConfig.yml"<<endl;
