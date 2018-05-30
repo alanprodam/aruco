@@ -51,14 +51,6 @@ void setParamsFromGlobalVariables(MarkerDetector &md){
 
 void printMenuInfo(Mat &im){
 
-    // putText(im, 
-    //     " Translate [" + to_string(TheMarkers[i].id) + "]: " 
-    //     + " x: " + to_string(TheMarkers[i].Tvec.ptr<float>(0)[i]) + "mm "
-    //     + " y: " + to_string(TheMarkers[i].Tvec.ptr<float>(1)[i]) + "mm )"
-    //     + " z: " + to_string(TheMarkers[i].Tvec.ptr<float>(2)[i]) + "mm )",
-    //     Point(10, 80), 1.2, 1.2, Scalar(0, 255, 0), 2);
-
-    //putText(im,"size" + to_string(im.cols) + "x" + to_string(im.rows),cv::Point(10,fs*40),fs*0.5f);
     putText(im, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
 }
 
@@ -67,17 +59,6 @@ int main(int argc, char** argv)
 
     try
     {
-        
-        //setParamsFromGlobalVariables(MDetector);
-
-        // DM_NORMAL - DM_VIDEO_FAST - DM_FAST(the best)
-        //MDetector.setDetectionMode(DM_FAST);
-        //MDetector.getParameters().setCornerRefinementMethod((CornerRefinementMethod) iCornerMode);
-        //MDetector.getParameters().ThresHold = iThreshold;
-
-        // configuration of aruco detector with library MIP_36h12 / second parameter is Minimum Marker Size to increse speed
-        //MDetector.setDictionary("/home/alantavares/aruco/utils/myconnect.dict");
-
         // Read camera calibration data from xml file
         TheCameraParameters.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/camera_result_4_image.yml");
 
