@@ -118,10 +118,13 @@ int main(int argc, char** argv)
                     
                     TheMarkers[i].draw(TheInputImage, Scalar(0, 0, 255),2,true);
 
-                    cout << " Translate [" << TheMarkers[i].id << "]: " <<
-                        "  x: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
-                        "\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
-                        "\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
+                    cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
+                        "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
+                        "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
+                        "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<<
+                        "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "<<
+                        "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "<<
+                        "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
 
                     //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
                     CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);

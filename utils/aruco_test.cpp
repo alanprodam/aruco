@@ -284,14 +284,19 @@ int main(int argc, char** argv)
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
                 printInfo(TheInputImageCopy);
-                if (TheMarkers.size() == 2 ){
+                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 1){
                     
                     TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255),2,true);
 
-                    cout << " Translate [" << TheMarkers[i].id << "]: " <<
-                        "  x: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
-                        "\ty: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
-                        "\tz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
+                    cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
+                        "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
+                        "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
+                        "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
+                    
+                    cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
+                        "  Rx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " m "<<
+                        "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " m "<<
+                        "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " m "<< endl;
 
                 }
             }
@@ -300,7 +305,7 @@ int main(int argc, char** argv)
             if (TheCameraParameters.isValid() && TheMarkerSize > 0)
                 for (unsigned int i = 0; i < TheMarkers.size(); i++)
                 {
-                    CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
+                    //CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
                     CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
                 }
 
