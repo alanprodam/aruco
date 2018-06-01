@@ -60,7 +60,7 @@ int main(int argc, char** argv)
     try
     {
         // Read camera calibration data from xml file
-        TheCameraParameters.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/camera_result_4_image.yml");
+        TheCameraParameters.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/camera_result_40_image.yml");
 
         if (!TheCameraParameters.isValid()) {
             cerr << "Calibration Parameters not valid" << endl;
@@ -71,7 +71,7 @@ int main(int argc, char** argv)
         MDetector.loadParamsFromFile("/home/alantavares/aruco/utils/arucoConfig.yml");
 
         // set detect the marker size that is 0.326
-        float MarkerSize = 0.095f;
+        float MarkerSize = 1.0f;
 
         TheVideoCapturer.open(1);
         //TheVideoCapturer.open("/home/alantavares/aruco-3.0.6/build/utils/datasets/dataset_high_resolution_stable.mp4");
@@ -114,8 +114,9 @@ int main(int argc, char** argv)
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 1){
-                    
+                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                {
+
                     TheMarkers[i].draw(TheInputImage, Scalar(0, 0, 255),2,true);
 
                     cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
@@ -129,12 +130,14 @@ int main(int argc, char** argv)
                     //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
                     CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
                 }
+
+
             }
 
             // show outputs with frame argumented information
             namedWindow("Video Aruco", CV_WINDOW_NORMAL);
             imshow("Video Aruco", TheInputImage);
-            resizeWindow("Video Aruco", 640,480);
+            resizeWindow("Video Aruco", 800,600);
             //resizeWindow("Video Aruco", TheInputImage.cols * 1.5, TheInputImage.rows * 1.5);
             //moveWindow("Video Aruco", 2000, 100);
 
