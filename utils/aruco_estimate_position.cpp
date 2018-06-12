@@ -50,7 +50,6 @@ void setParamsFromGlobalVariables(MarkerDetector &md){
 }
 
 void printMenuInfo(Mat &im){
-
     putText(im, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
 }
 
@@ -114,7 +113,7 @@ int main(int argc, char** argv)
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 1) //|| TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
                 {
 
                     TheMarkers[i].draw(TheInputImage, Scalar(0, 0, 255),2,true);
@@ -128,6 +127,7 @@ int main(int argc, char** argv)
                         "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
 
                     //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
+                    printMenuInfo(TheInputImage);
                     CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
                 }
 
@@ -137,7 +137,7 @@ int main(int argc, char** argv)
             // show outputs with frame argumented information
             namedWindow("Video Aruco", CV_WINDOW_NORMAL);
             imshow("Video Aruco", TheInputImage);
-            resizeWindow("Video Aruco", 800,600);
+            resizeWindow("Video Aruco", 1020,720);
             //resizeWindow("Video Aruco", TheInputImage.cols * 1.5, TheInputImage.rows * 1.5);
             //moveWindow("Video Aruco", 2000, 100);
 
@@ -148,7 +148,7 @@ int main(int argc, char** argv)
             // show outputs with ThresholdedImage argumented information
             namedWindow("Video thres", CV_WINDOW_NORMAL);
             imshow("Video thres", TheInputImageCopy);
-            resizeWindow("Video thres", 640,480);
+            resizeWindow("Video thres", 1020,720);
             //resizeWindow("Video thres", TheInputImageCopy.cols * 1.5, TheInputImageCopy.rows * 1.5);
             //moveWindow("Video Aruco", 2000+100, 100);
 
