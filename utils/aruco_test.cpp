@@ -147,7 +147,7 @@ void printMenuInfo(){
 
         str="Detection Mode="+MarkerDetector::Params::toString(MDetector.getParameters().detectMode);
         cv::putText(image,str,cv::Size(10,40),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
-        str="Corner Mode="+MarkerDetector::Params::toString(MDetector.getParameters().cornerRefinementM);;
+        str="Corner Mode="+MarkerDetector::Params::toString(MDetector.getParameters().cornerRefinementM);
         cv::putText(image,str,cv::Size(10,60),FONT_HERSHEY_SIMPLEX, 0.35,cv::Scalar(0,0,0),1);
         cv::imshow("menu",image);
 }

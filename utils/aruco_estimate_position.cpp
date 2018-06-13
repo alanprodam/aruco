@@ -6,6 +6,7 @@
 #include <sstream>
 #include <string>
 #include <stdexcept>
+#include "/home/alantavares/aruco/mavlink/common/mavlink.h"
 
 using namespace std;
 using namespace cv;
@@ -14,7 +15,7 @@ using namespace aruco;
 // default capture width and height
 const int FRAME_WIDTH = 640;
 const int FRAME_HEIGHT = 480;
-
+const int inputfps = 30;
 
 // create the detector o set parameters 
 MarkerDetector MDetector;
@@ -29,24 +30,67 @@ CameraParameters TheCameraParameters;
 
 
 // parameters of ArUrco MarkerSize
-int iDetectMode = 0,iMinMarkerSize = 0;
-int iCornerMode;
+int iDetectMode = 1,iMinMarkerSize = 0;
+int iCornerMode = 0;
 int iThreshold;
-int iCorrectionRate = 0;
-int iDictionaryIndex = 0;
+int iCorrectionRate;
+int iDictionaryIndex;
+int iEnclosed = 0;
 
 bool isVideo=false;
 
-void setParamsFromGlobalVariables(MarkerDetector &md){
+// MAVLink library interface
+int sysid = 200;
+int compid = 0;
+int type = MAV_TYPE_QUADROTOR;
 
+uint8_t system_type = MAV_TYPE_GENERIC;
+uint8_t autopilot_type = MAV_AUTOPILOT_INVALID;
+uint8_t system_mode = 209;
+uint32_t custom_mode = 2;
+uint8_t system_state = MAV_STATE_STANDBY;
 
-    md.setDetectionMode((DetectionMode)iDetectMode,float(iMinMarkerSize)/1000.);
-    md.getParameters().setCornerRefinementMethod((CornerRefinementMethod) iCornerMode);
+void mavlink_Send(uint8_t hum, float temp, uint8_t hum_control, float temp_control)
+{
+    mavlink_message_t msg;
+    uint8_t buf[MAVLINK_MAX_PACKET_LEN];
+    //mavlink_msg_landing_target_send();
+    //uint16_t len = mavlink_msg_to_send_buffer(buf, &msg);
 
-    md.getParameters().ThresHold = iThreshold;
-    if(Dictionary::getTypeFromString( md.getParameters().dictionary) != Dictionary::CUSTOM){
-        md.setDictionary((Dictionary::DICT_TYPES) iDictionaryIndex,float(iCorrectionRate)/10. );  // sets the dictionary to be employed (ARUCO,APRILTAGS,ARTOOLKIT,etc)
+    //Serial.write(buf, len);
+}
+
+void setParamsFromGlobalVariables(aruco::MarkerDetector &md)
+{
+    cout << "\n\n*************Parameters*************" << endl;
+
+    iDictionaryIndex = Dictionary::getTypeFromString(md.getParameters().dictionary);
+    if (aruco::Dictionary::getTypeFromString(md.getParameters().dictionary) != Dictionary::CUSTOM) {
+        md.setDictionary((aruco::Dictionary::DICT_TYPES)iDictionaryIndex, float(iCorrectionRate) / 10.); // sets the dictionary to be employed (ARUCO,APRILTAGS,ARTOOLKIT,etc)
     }
+    cout << "Dictionary = " << Dictionary::getTypeString((aruco::Dictionary::DICT_TYPES)iDictionaryIndex) << endl;
+
+    iDetectMode = md.getParameters().detectMode;
+    md.setDetectionMode((DetectionMode)iDetectMode, float(iMinMarkerSize) / 1000.);
+    cout << "DetectMode Mode = " << MarkerDetector::Params::toString((DetectionMode)iDetectMode) << endl;
+
+    iThreshold = md.getParameters().ThresHold;
+    md.getParameters().ThresHold = iThreshold;
+    cout << "Threshold Current = " << iThreshold << endl;
+
+    md.getParameters().setCornerRefinementMethod((aruco::CornerRefinementMethod)iCornerMode);
+    iCornerMode = md.getParameters().cornerRefinementM;
+    cout << "CornerMode Mode = " << MarkerDetector::Params::toString(md.getParameters().cornerRefinementM) << endl;
+
+    md.getParameters().detectEnclosedMarkers(iEnclosed);
+    if (iEnclosed == 1){
+        cout << "Enclosed Mode = Enclosed" << endl;
+    } else{
+        cout << "Enclosed Mode = No Enclosed" << endl;
+    } 
+
+    uint32_t marker_history = 30;
+    cout << "MarkerHistory = " << marker_history << endl;    
 }
 
 void printMenuInfo(Mat &im){
@@ -55,7 +99,6 @@ void printMenuInfo(Mat &im){
 
 int main(int argc, char** argv)
 {
-
     try
     {
         // Read camera calibration data from xml file
@@ -80,20 +123,18 @@ int main(int argc, char** argv)
             //set height and width of capture frame
             TheVideoCapturer.set(CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH);
             TheVideoCapturer.set(CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT);
-            
+            TheVideoCapturer.set(CV_CAP_PROP_FPS, inputfps);
+            cout << "FPS Current = " << CV_CAP_PROP_FPS << endl;
+
             isVideo = true;
 
         } else{
                 throw std::runtime_error("*****Could not open video*****");
         }
 
-        iDictionaryIndex = Dictionary::getTypeFromString( MDetector.getParameters().dictionary );
-        cout << "iDictionaryIndex Current = " << Dictionary::getTypeString((aruco::Dictionary::DICT_TYPES) iDictionaryIndex) << endl;
-        
-        iThreshold = MDetector.getParameters().ThresHold;
-        cout << "iThreshold Current = " << iThreshold << endl;
-        iCornerMode = MDetector.getParameters().cornerRefinementM;
-        cout << "iCornerMode Current = " << iCornerMode << endl;
+       
+
+        setParamsFromGlobalVariables(MDetector);
 
         while (true)
         {          
@@ -113,11 +154,16 @@ int main(int argc, char** argv)
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 1) //|| TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 5) //|| TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
                 {
 
-                    TheMarkers[i].draw(TheInputImage, Scalar(0, 0, 255),2,true);
+                    // green
+                    //TheMarkers[i].draw(TheInputImage, Scalar(0, 255, 0, 0), 2, CV_AA);
 
+                    // red maker
+                    TheMarkers[i].draw(TheInputImage, Scalar(0, 0, 255, 0), 2, CV_AA);
+
+                    // translatio and rotation
                     cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
                         "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
                         "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
@@ -128,10 +174,9 @@ int main(int argc, char** argv)
 
                     //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
                     printMenuInfo(TheInputImage);
-                    CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
+                    //CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
+
                 }
-
-
             }
 
             // show outputs with frame argumented information
