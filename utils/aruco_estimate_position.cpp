@@ -13,8 +13,8 @@ using namespace cv;
 using namespace aruco;
 
 // default capture width and height
-const int FRAME_WIDTH = 640;
-const int FRAME_HEIGHT = 480;
+const int FRAME_WIDTH = 1280; //640;
+const int FRAME_HEIGHT = 720; //480;
 const int inputfps = 30;
 
 // create the detector o set parameters 
@@ -24,10 +24,12 @@ VideoCapture TheVideoCapturer;
 // Create the vector marker to set the parameters of The Markers
 vector<Marker> TheMarkers;
 // create image frame of video of type Mat
-Mat TheInputImage, TheInputImageCopy;
+Mat TheInputImage, TheInputImageCopy, TheInputImageThCopy;
 // create the camera parameters to set ArUrco
 CameraParameters TheCameraParameters;
 
+// use a map so that for each id, we use a different pose tracker
+std::map<uint32_t, MarkerPoseTracker> MTracker; 
 
 // parameters of ArUrco MarkerSize
 int iDetectMode = 1,iMinMarkerSize = 0;
@@ -36,8 +38,45 @@ int iThreshold;
 int iCorrectionRate;
 int iDictionaryIndex;
 int iEnclosed = 0;
+int iShowAllCandidates = 0;
 
 bool isVideo=false;
+
+struct TimerAvrg
+{
+    std::vector<double> times;
+    size_t curr = 0, n;
+    std::chrono::high_resolution_clock::time_point begin, end;
+    TimerAvrg(int _n = 30)
+    {
+        n = _n;
+        times.reserve(n);
+    }
+    inline void start() { begin = std::chrono::high_resolution_clock::now(); }
+    inline void stop()
+    {
+        end = std::chrono::high_resolution_clock::now();
+        double duration = double(std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) * 1e-6;
+        if (times.size() < n)
+            times.push_back(duration);
+        else
+        {
+            times[curr] = duration;
+            curr++;
+            if (curr >= times.size())
+                curr = 0;
+        }
+    }
+    double getAvrg()
+    {
+        double sum = 0;
+        for (auto t : times)
+            sum += t;
+        return sum / double(times.size());
+    }
+};
+
+TimerAvrg Fps;
 
 // MAVLink library interface
 int sysid = 200;
@@ -49,16 +88,6 @@ uint8_t autopilot_type = MAV_AUTOPILOT_INVALID;
 uint8_t system_mode = 209;
 uint32_t custom_mode = 2;
 uint8_t system_state = MAV_STATE_STANDBY;
-
-void mavlink_Send(uint8_t hum, float temp, uint8_t hum_control, float temp_control)
-{
-    mavlink_message_t msg;
-    uint8_t buf[MAVLINK_MAX_PACKET_LEN];
-    //mavlink_msg_landing_target_send();
-    //uint16_t len = mavlink_msg_to_send_buffer(buf, &msg);
-
-    //Serial.write(buf, len);
-}
 
 void setParamsFromGlobalVariables(aruco::MarkerDetector &md)
 {
@@ -93,7 +122,12 @@ void setParamsFromGlobalVariables(aruco::MarkerDetector &md)
     cout << "MarkerHistory = " << marker_history << endl;    
 }
 
-void printMenuInfo(Mat &im){
+void printMenuInfo(Mat &im, int i)
+{
+    float fs = float(im.cols) / float(1000);
+    putText(im, "fps = " + to_string(1. / Fps.getAvrg()), Point(10, fs * 30), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
+    putText(im, "Size Image: " + to_string(im.cols) + "x" + to_string(im.rows), Point(10, fs * 60), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
+    putText(im, "Tz: " + to_string(TheMarkers[i].Tvec.ptr<float>(2)[0]), Point(10, fs * 90), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
     putText(im, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
 }
 
@@ -102,7 +136,8 @@ int main(int argc, char** argv)
     try
     {
         // Read camera calibration data from xml file
-        TheCameraParameters.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/camera_result_40_image.yml");
+        //TheCameraParameters.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/calibration_smartphone_640x480.yml");
+        TheCameraParameters.readFromXMLFile("/home/alantavares/aruco/utils/filecalibration/calibration_smartphone_1280x720.yml");
 
         if (!TheCameraParameters.isValid()) {
             cerr << "Calibration Parameters not valid" << endl;
@@ -116,7 +151,8 @@ int main(int argc, char** argv)
         float MarkerSize = 1.0f;
 
         TheVideoCapturer.open(1);
-        //TheVideoCapturer.open("/home/alantavares/aruco-3.0.6/build/utils/datasets/dataset_high_resolution_stable.mp4");
+        //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste1-marcador-03-640-480.mp4");
+        //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste2-marcador-03-1280-720.mp4");
 
         // check video is open
         if (TheVideoCapturer.isOpened()){
@@ -132,14 +168,16 @@ int main(int argc, char** argv)
                 throw std::runtime_error("*****Could not open video*****");
         }
 
-       
-
         setParamsFromGlobalVariables(MDetector);
+
+        int makerHistory = 0;
+        // 1014 histórico de registro do marcador (NORMAL)
+        // 1009 histórico de registro do marcador (FAST)
 
         while (true)
         {          
             // capture frame
-            //TheVideoCapturer.retrieve(frame);
+            //TheVideoCapturer.retrieve(TheInputImage);
 
             // read first image to get the dimensions
             TheVideoCapturer >> TheInputImage;
@@ -147,54 +185,83 @@ int main(int argc, char** argv)
                 TheCameraParameters.resize(TheInputImage.size());
             }
 
+            Fps.start();
             // detection with frame, parameters of camera e marker size
-            TheMarkers = MDetector.detect(TheInputImage, TheCameraParameters, MarkerSize);
+            //TheMarkers = MDetector.detect(TheInputImage, TheCameraParameters, MarkerSize);
+            TheMarkers = MDetector.detect(TheInputImage);
+            Fps.stop();
 
+            // chekc the speed by calculating the mean speed of all iterations
+            //cout << "\rTime detection = " << Fps.getAvrg()*1000 << " milliseconds nmarkers = " << TheMarkers.size() << std::endl;
+
+            // print marker info and draw the markers in image
+            TheInputImage.copyTo(TheInputImageCopy);
+
+            if (iShowAllCandidates == 1)
+            {
+                auto candidates = MDetector.getCandidates();
+                for (auto cand : candidates)
+                    Marker(cand, -1).draw(TheInputImageCopy, Scalar(255, 0, 255));
+            }
+
+            // for each marker
+            // for (auto &marker : TheMarkers){
+                
+            // } 
+                
 
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 5) //|| TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                if (TheMarkers[i].id == 1) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
                 {
-
+                    MTracker[TheMarkers[i].id].estimatePose(TheMarkers[i], TheCameraParameters, 0.095);
                     // green
-                    //TheMarkers[i].draw(TheInputImage, Scalar(0, 255, 0, 0), 2, CV_AA);
+                    //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 255, 0, 0), 2, CV_AA);
 
                     // red maker
-                    TheMarkers[i].draw(TheInputImage, Scalar(0, 0, 255, 0), 2, CV_AA);
+                    TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255, 0), 2, CV_AA);
 
+                    makerHistory++;
+                    //cout << " makerHistory: " << makerHistory << endl;
                     // translatio and rotation
-                    cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
-                        "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
-                        "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
-                        "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<<
-                        "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "<<
-                        "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "<<
-                        "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
+                    // cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
+                    //     "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
+                    //     "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
+                    //     "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<<
+                    //     "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "<<
+                    //     "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "<<
+                    //     "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
 
-                    //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
-                    printMenuInfo(TheInputImage);
-                    //CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
-
+                    cout << " LandMarker [" << TheMarkers[i].id << "]: " << MTracker[TheMarkers[i].id].getTvec() << endl;
                 }
             }
 
+            // // draw a 3d cube in each marker if there is 3d info
+            if (TheCameraParameters.isValid() && MarkerSize != -1)
+                for (unsigned int i = 0; i < TheMarkers.size(); i++)
+                {
+                    //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
+                    //printMenuInfo(TheInputImageCopy, i);
+                    //CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
+                }
+
             // show outputs with frame argumented information
             namedWindow("Video Aruco", CV_WINDOW_NORMAL);
-            imshow("Video Aruco", TheInputImage);
+            imshow("Video Aruco", TheInputImageCopy);
             resizeWindow("Video Aruco", 1020,720);
-            //resizeWindow("Video Aruco", TheInputImage.cols * 1.5, TheInputImage.rows * 1.5);
+            //resizeWindow("Video Aruco", TheInputImageCopy.cols * 1.5, TheInputImageCopy.rows * 1.5);
             //moveWindow("Video Aruco", 2000, 100);
 
             // print marker info and draw the markers in image
-            TheInputImage.copyTo(TheInputImageCopy);
-            TheInputImageCopy = MDetector.getThresholdedImage();
+            TheInputImageCopy.copyTo(TheInputImageThCopy);
+            TheInputImageThCopy = MDetector.getThresholdedImage();
 
             // show outputs with ThresholdedImage argumented information
             namedWindow("Video thres", CV_WINDOW_NORMAL);
-            imshow("Video thres", TheInputImageCopy);
+            imshow("Video thres", TheInputImageThCopy);
             resizeWindow("Video thres", 1020,720);
-            //resizeWindow("Video thres", TheInputImageCopy.cols * 1.5, TheInputImageCopy.rows * 1.5);
+            //resizeWindow("Video thres", TheInputImageThCopy.cols * 1.5, TheInputImageThCopy.rows * 1.5);
             //moveWindow("Video Aruco", 2000+100, 100);
 
             //cout << " size" << frame.cols << "x" << frame.rows << endl;
@@ -204,4 +271,4 @@ int main(int argc, char** argv)
         cout << "Exception :" << ex.what() << endl;
     }
     return 0;
-}
+}                    
