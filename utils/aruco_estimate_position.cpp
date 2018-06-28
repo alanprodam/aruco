@@ -150,9 +150,9 @@ int main(int argc, char** argv)
         // set detect the marker size that is 0.326
         float MarkerSize = 1.0f;
 
-        TheVideoCapturer.open(1);
+        //TheVideoCapturer.open(1);
         //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste1-marcador-03-640-480.mp4");
-        //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste2-marcador-03-1280-720.mp4");
+        TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste2-marcador-03-1280-720.mp4");
 
         // check video is open
         if (TheVideoCapturer.isOpened()){
@@ -205,18 +205,31 @@ int main(int argc, char** argv)
                     Marker(cand, -1).draw(TheInputImageCopy, Scalar(255, 0, 255));
             }
 
-            // for each marker
-            // for (auto &marker : TheMarkers){
-                
-            // } 
-                
+
+
+            
+            // for each marker, draw info and its boundaries in the image
+            for (unsigned int i = 0; i < TheMarkers.size(); i++)
+            {
+                if (TheMarkers[i].id == 1) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                {
+                    MTracker[TheMarkers[i].id].estimatePose(TheMarkers[i], TheCameraParameters, MarkerSize);
+                }
+
+                if (TheMarkers[i].id == 3) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                {
+                    MTracker[TheMarkers[i].id].estimatePose(TheMarkers[i], TheCameraParameters, 0.095);
+                }
+            }
+
+
+
 
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                if (TheMarkers[i].id == 2) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                if (TheMarkers[i].id == 1)
                 {
-                    MTracker[TheMarkers[i].id].estimatePose(TheMarkers[i], TheCameraParameters, 1);
                     // green
                     //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 255, 0, 0), 2, CV_AA);
 
@@ -231,7 +244,6 @@ int main(int argc, char** argv)
 
                 if (TheMarkers[i].id == 3) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
                 {
-                    MTracker[TheMarkers[i].id].estimatePose(TheMarkers[i], TheCameraParameters, 0.095);
                     // green
                     //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 255, 0, 0), 2, CV_AA);
 
@@ -245,14 +257,20 @@ int main(int argc, char** argv)
                 }
             }
 
+
+
             // // draw a 3d cube in each marker if there is 3d info
-            if (TheCameraParameters.isValid() && MarkerSize != -1)
-                for (unsigned int i = 0; i < TheMarkers.size(); i++)
-                {
-                    //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
-                    //printMenuInfo(TheInputImageCopy, i);
-                    //CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
-                }
+            // if (CamParam.isValid())
+            // {
+            //     for (unsigned int i = 0; i < Markers.size(); i++)
+            //     {
+            //         if (Markers[i].isPoseValid())
+            //         {
+            //             //CvDrawingUtils::draw3dCube(InImage, Markers[i], CamParam);
+            //             //CvDrawingUtils::draw3dAxis(InImage, Markers[i], CamParam);
+            //         }
+            //     }
+            // }
 
             // show outputs with frame argumented information
             namedWindow("Video Aruco", CV_WINDOW_NORMAL);

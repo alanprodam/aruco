@@ -61,7 +61,7 @@ int main(int argc, char** argv)
                  << endl;
             cout << "Example to work with apriltags dictionary : video.avi -d TAG36h11" << endl << endl;
             return 0;
-        }
+        }        
 
         aruco::CameraParameters CamParam;
 
@@ -102,20 +102,13 @@ int main(int argc, char** argv)
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < Markers.size(); i++)
             {
-                cout << Markers[i] << endl;
-                Markers[i].draw(InImage, Scalar(0, 0, 255), 2);
-            }
-            // draw a 3d cube in each marker if there is 3d info
-            if (CamParam.isValid() && MarkerSize != -1)
-            {
-                for (unsigned int i = 0; i < Markers.size(); i++)
-                {
-                    if (Markers[i].isPoseValid()){
-                        CvDrawingUtils::draw3dCube(InImage, Markers[i], CamParam);
-                        CvDrawingUtils::draw3dAxis(InImage, Markers[i], CamParam);
-                    }
+                if (Markers[i].id == 1){
+                    cout << " LandMarker [" << Markers[i].id << "]: " << MTracker[Markers[i].id].getTvec() << endl;
+                    Markers[i].draw(InImage, Scalar(0, 0, 255), 2);
                 }
+                    
             }
+
             // show input with augmented information
             cv::namedWindow("in", 1);
             cv::imshow("in", InImage);
