@@ -40,11 +40,11 @@ using namespace std;
 using namespace cv;
 using namespace aruco;
 
-// const int FRAME_WIDTH = 1280;
-// const int FRAME_HEIGHT = 720;
+const int FRAME_WIDTH = 1280;
+const int FRAME_HEIGHT = 720;
 
-const int FRAME_WIDTH = 640;
-const int FRAME_HEIGHT = 480;
+// const int FRAME_WIDTH = 640;
+// const int FRAME_HEIGHT = 480;
 
 MarkerDetector MDetector;
 VideoCapture TheVideoCapturer;
@@ -257,7 +257,11 @@ int main(int argc, char** argv)
         }
         // go!
         char key = 0;
-        int index = 0,indexSave=0;
+        int index = 0,indexSave = 0;
+        int makerHistory = 0;
+        // 1014 histórico de registro do marcador (NORMAL)
+        // 1009 histórico de registro do marcador (FAST)
+
         // capture until press ESC or until the end of the video
          do
         {
@@ -284,20 +288,22 @@ int main(int argc, char** argv)
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
                 printInfo(TheInputImageCopy);
-                if (TheMarkers[i].id == 0 || TheMarkers[i].id == 1){
-                    
+                if (TheMarkers[i].id == 1){
+
+                    makerHistory++;
+
                     TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255),2,true);
+                    //halfSize = MDetector.p0;
 
-                    cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
-                        "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
-                        "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
-                        "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
-                    
-                    cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
-                        "  Rx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " m "<<
-                        "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " m "<<
-                        "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " m "<< endl;
-
+                    // translatio and rotation
+                    cout << " LandMarker [" << TheMarkers[i].id << "]: "
+                         << "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "
+                         << "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "
+                         << "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "
+                         //  << "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "
+                         //  << "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "
+                         //  << "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "
+                         << " makerHistory: " << makerHistory << endl;
                 }
             }
 
@@ -306,7 +312,7 @@ int main(int argc, char** argv)
                 for (unsigned int i = 0; i < TheMarkers.size(); i++)
                 {
                     //CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
-                    CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
+                    //CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
                 }
 
             // DONE! Easy, right?
@@ -397,12 +403,16 @@ void cvTackBarEvents(int pos, void*)
     }
 
     // draw a 3d cube in each marker if there is 3d info
-    if (TheCameraParameters.isValid())
-        for (unsigned int i = 0; i < TheMarkers.size(); i++)
-            CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
-    cv::putText(TheInputImageCopy,"fps="+to_string(1./Fps.getAvrg() ),cv::Point(10,20),FONT_HERSHEY_SIMPLEX, 0.5f,cv::Scalar(125,255,255),2,CV_AA);
-    cv::putText(TheInputImageCopy,"size" + to_string(TheInputImageCopy.cols) + "x" + to_string(TheInputImageCopy.rows), cv::Point(10,20),FONT_HERSHEY_SIMPLEX, 0.5f,cv::Scalar(125,255,255),2,CV_AA);
-    
+    if (TheCameraParameters.isValid()){
+        // for (unsigned int i = 0; i < TheMarkers.size(); i++){
+        //     //CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers[i], TheCameraParameters);
+        // }
+        float fs = float(TheInputImageCopy.cols) / float(1000);
+        putText(TheInputImageCopy, "fps = " + to_string(1./Fps.getAvrg()), Point(10, fs*30), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
+        putText(TheInputImageCopy, "Size Image: " + to_string(TheInputImageCopy.cols) + "x" + to_string(TheInputImageCopy.rows), Point(10, fs * 60), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
+        putText(TheInputImageCopy, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.5, 1.5, Scalar(0, 0, 255), 2);
+    }
+
     cv::imshow("in",  TheInputImageCopy );
     cv::imshow("thres", resize(MDetector.getThresholdedImage(), 1024));
     if(showMennu)printMenuInfo();
