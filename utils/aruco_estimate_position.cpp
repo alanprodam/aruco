@@ -118,7 +118,7 @@ void setParamsFromGlobalVariables(aruco::MarkerDetector &md)
         cout << "Enclosed Mode = No Enclosed" << endl;
     } 
 
-    uint32_t marker_history = 30;
+    uint32_t marker_history = 0;
     cout << "MarkerHistory = " << marker_history << endl;    
 }
 
@@ -187,8 +187,7 @@ int main(int argc, char** argv)
 
             Fps.start();
             // detection with frame, parameters of camera e marker size
-            //TheMarkers = MDetector.detect(TheInputImage, TheCameraParameters, MarkerSize);
-            TheMarkers = MDetector.detect(TheInputImage);
+            TheMarkers = MDetector.detect(TheInputImage, TheCameraParameters, MarkerSize);
             Fps.stop();
 
             // chekc the speed by calculating the mean speed of all iterations
@@ -204,18 +203,11 @@ int main(int argc, char** argv)
                     Marker(cand, -1).draw(TheInputImageCopy, Scalar(255, 0, 255));
             }
 
-            // for each marker
-            // for (auto &marker : TheMarkers){
-                
-            // } 
-                
-
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
                 if (TheMarkers[i].id == 1) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
                 {
-                    MTracker[TheMarkers[i].id].estimatePose(TheMarkers[i], TheCameraParameters, 0.095);
                     // green
                     //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 255, 0, 0), 2, CV_AA);
 
@@ -223,17 +215,16 @@ int main(int argc, char** argv)
                     TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255, 0), 2, CV_AA);
 
                     makerHistory++;
-                    //cout << " makerHistory: " << makerHistory << endl;
+                    cout << " makerHistory: " << makerHistory << endl;
                     // translatio and rotation
-                    // cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
-                    //     "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
-                    //     "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
-                    //     "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<<
-                    //     "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "<<
-                    //     "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "<<
-                    //     "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
+                    cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
+                        "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
+                        "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
+                        "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
+                        // "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "<<
+                        // "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "<<
+                        // "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
 
-                    cout << " LandMarker [" << TheMarkers[i].id << "]: " << MTracker[TheMarkers[i].id].getTvec() << endl;
                 }
             }
 
@@ -242,7 +233,7 @@ int main(int argc, char** argv)
                 for (unsigned int i = 0; i < TheMarkers.size(); i++)
                 {
                     //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
-                    //printMenuInfo(TheInputImageCopy, i);
+                    printMenuInfo(TheInputImageCopy, i);
                     //CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
                 }
 
