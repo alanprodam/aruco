@@ -1,5 +1,12 @@
 {
     "files.associations": {
-        "thread": "cpp"
+        "thread": "cpp",
+        "iostream": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "slist": "cpp",
+        "initializer_list": "cpp"
     }
 }

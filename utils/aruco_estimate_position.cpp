@@ -212,18 +212,32 @@ int main(int argc, char** argv)
                     //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 255, 0, 0), 2, CV_AA);
 
                     // red maker
-                    TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255, 0), 2, CV_AA);
+                    //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255, 0), 2, CV_AA);
+
+                    //TheMarkers[i].contourPoints.[0];
+                    cout << " contourPoints[0]: " << TheMarkers[i].contourPoints[1].x << " end" << endl;
+                    cout << " size: " << TheMarkers[i].contourPoints.size() << " end" << endl;
+                    //cout << " contourPoints: " << TheMarkers[i].contourPoints << " end" <<endl;
+
+                    if (TheMarkers[i].contourPoints.size() > 0)
+                        for (unsigned int j = 0; j < TheMarkers[i].contourPoints.size(); j++)
+                        {
+                            putText(TheInputImageCopy, "X",
+                                    Point(TheMarkers[i].contourPoints[j].x,
+                                          TheMarkers[i].contourPoints[j].y),
+                                    1.2, 1.2, Scalar(255, 0, 0), 2);
+                        }
 
                     makerHistory++;
-                    cout << " makerHistory: " << makerHistory << endl;
+                    //cout << " makerHistory: " << makerHistory << endl;
                     // translatio and rotation
-                    cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
-                        "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
-                        "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
-                        "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
-                        // "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "<<
-                        // "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "<<
-                        // "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
+                    // cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
+                    //     "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
+                    //     "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
+                    //     "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
+                    //     // "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "<<
+                    //     // "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "<<
+                    //     // "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
 
                 }
             }
@@ -235,6 +249,7 @@ int main(int argc, char** argv)
                     //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
                     printMenuInfo(TheInputImageCopy, i);
                     //CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
+                
                 }
 
             // show outputs with frame argumented information
