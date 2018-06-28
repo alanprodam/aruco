@@ -115,8 +115,8 @@ int main(int argc, char** argv)
         // set detect the marker size that is 0.326
         float MarkerSize = 1.0f;
 
-        TheVideoCapturer.open(1);
-        //TheVideoCapturer.open("/home/alantavares/aruco-3.0.6/build/utils/datasets/dataset_high_resolution_stable.mp4");
+        //TheVideoCapturer.open(1);
+        TheVideoCapturer.open("/home/alantavares/aruco-3.0.6/build/utils/datasets/dataset_high_resolution_stable.mp4");
 
         // check video is open
         if (TheVideoCapturer.isOpened()){
