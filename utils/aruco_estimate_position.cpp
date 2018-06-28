@@ -150,9 +150,9 @@ int main(int argc, char** argv)
         // set detect the marker size that is 0.326
         float MarkerSize = 1.0f;
 
-        TheVideoCapturer.open(1);
+        //TheVideoCapturer.open(1);
         //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste1-marcador-03-640-480.mp4");
-        //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste2-marcador-03-1280-720.mp4");
+        TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste2-marcador-03-1280-720.mp4");
 
         // check video is open
         if (TheVideoCapturer.isOpened()){
