@@ -159,8 +159,8 @@ int main(int argc, char** argv)
             //set height and width of capture frame
             TheVideoCapturer.set(CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH);
             TheVideoCapturer.set(CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT);
-            TheVideoCapturer.set(CV_CAP_PROP_FPS, inputfps);
-            cout << "FPS Current = " << CV_CAP_PROP_FPS << endl;
+            //TheVideoCapturer.set(CV_CAP_PROP_FPS, inputfps);
+            //cout << "FPS Current = " << CV_CAP_PROP_FPS << endl;
 
             isVideo = true;
 
@@ -170,7 +170,8 @@ int main(int argc, char** argv)
 
         setParamsFromGlobalVariables(MDetector);
 
-        int makerHistory = 0;
+        int makerHistory1 = 0;
+        int makerHistory3 = 0;
         // 1014 histórico de registro do marcador (NORMAL)
         // 1009 histórico de registro do marcador (FAST)
 
@@ -213,7 +214,22 @@ int main(int argc, char** argv)
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers.size(); i++)
             {
-                if (TheMarkers[i].id == 1) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                if (TheMarkers[i].id == 2) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                {
+                    MTracker[TheMarkers[i].id].estimatePose(TheMarkers[i], TheCameraParameters, 1);
+                    // green
+                    //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 255, 0, 0), 2, CV_AA);
+
+                    // red maker
+                    TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255, 0), 2, CV_AA);
+
+                    makerHistory1++;
+                    cout << " makerHistory[" << TheMarkers[i].id << "]: " << makerHistory1 << endl;
+                    // translatio and rotation
+                    cout << " LandMarker [" << TheMarkers[i].id << "]: " << MTracker[TheMarkers[i].id].getTvec() << endl;
+                }
+
+                if (TheMarkers[i].id == 3) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
                 {
                     MTracker[TheMarkers[i].id].estimatePose(TheMarkers[i], TheCameraParameters, 0.095);
                     // green
@@ -222,17 +238,9 @@ int main(int argc, char** argv)
                     // red maker
                     TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255, 0), 2, CV_AA);
 
-                    makerHistory++;
-                    //cout << " makerHistory: " << makerHistory << endl;
+                    makerHistory3++;
+                    cout << " makerHistory[" << TheMarkers[i].id << "]: " << makerHistory3 << endl;
                     // translatio and rotation
-                    // cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
-                    //     "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
-                    //     "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
-                    //     "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<<
-                    //     "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "<<
-                    //     "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "<<
-                    //     "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
-
                     cout << " LandMarker [" << TheMarkers[i].id << "]: " << MTracker[TheMarkers[i].id].getTvec() << endl;
                 }
             }
