@@ -83,6 +83,8 @@ int sysid = 200;
 int compid = 0;
 int type = MAV_TYPE_QUADROTOR;
 
+RNG rng(12345);
+
 uint8_t system_type = MAV_TYPE_GENERIC;
 uint8_t autopilot_type = MAV_AUTOPILOT_INVALID;
 uint8_t system_mode = 209;
@@ -215,17 +217,37 @@ int main(int argc, char** argv)
                     //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255, 0), 2, CV_AA);
 
                     //TheMarkers[i].contourPoints.[0];
-                    cout << " contourPoints[0]: " << TheMarkers[i].contourPoints[1].x << " end" << endl;
-                    cout << " size: " << TheMarkers[i].contourPoints.size() << " end" << endl;
+                    //cout << " contourPoints[0]: " << TheMarkers[i].contourPoints[1] << endl;
+                    
+                    Point2f cent(TheMarkers[i].getCenter());
+                    //cout << " center: " << cent.x << " " << cent.y << endl;
                     //cout << " contourPoints: " << TheMarkers[i].contourPoints << " end" <<endl;
+                    cout << " size: " << TheMarkers[i].contourPoints.size() << endl;
+                    cout << " Center: " << TheMarkers[i].getCenter() << endl;
+                    cout << " Area: " << TheMarkers[i].getArea() << endl;
+                    cout << " Perimeter: " << TheMarkers[i].getPerimeter() << endl;
+
+                    vector<Marker> p0 = TheMarkers;
+
+                    for (unsigned int i = 0; i < TheMarkers.size(); i++)
+                    {
+                        cv::line(TheInputImageCopy, p0[i][0], p0[i][1], cvScalar(0, 255, 0), 3, CV_AA);
+                        
+                        cout << " Ponto[0]: " << p0[i][0].x << endl;
+                        p0[i][0].x =+10;
+                        cout << " Ponto[0]+10: " << p0[i][0].x << endl;
+                    }
 
                     if (TheMarkers[i].contourPoints.size() > 0)
                         for (unsigned int j = 0; j < TheMarkers[i].contourPoints.size(); j++)
                         {
-                            putText(TheInputImageCopy, "X",
-                                    Point(TheMarkers[i].contourPoints[j].x,
-                                          TheMarkers[i].contourPoints[j].y),
-                                    1.2, 1.2, Scalar(255, 0, 0), 2);
+                            // putText(TheInputImageCopy, "X", 
+                            //         Point(TheMarkers[i].contourPoints[j].x,
+                            //               TheMarkers[i].contourPoints[j].y),
+                            //         1.2, 1.2, Scalar(255, 0, 0), 2);
+
+                            //Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
+                            //rectangle(TheInputImageCopy, boundRect[j].tl(), boundRect[j].br(), color, 2, 8, 0);
                         }
 
                     makerHistory++;
