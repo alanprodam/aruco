@@ -85,7 +85,7 @@ int main(int argc, char** argv)
             return -1;
         }
 
-        auto Dict = aruco::Dictionary::loadPredefined(cml("-d", "ARUCO_MIP_36h12"));
+        auto Dict = aruco::Dictionary::loadPredefined(cml("-d", "ALL_DICTS"));        
         int pixSize = stoi(cml("-s", "500"));
         int typeMarkerMap = stoi(cml("-t", "0"));
         int rand_seed = stoi(cml("-r", "0"));
