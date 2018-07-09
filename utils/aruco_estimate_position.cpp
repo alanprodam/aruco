@@ -18,11 +18,13 @@ const int FRAME_HEIGHT = 720; //480;
 const int inputfps = 30;
 
 // create the detector o set parameters 
-MarkerDetector MDetector;
+MarkerDetector MDetector0;
+MarkerDetector MDetector3;
 // video capture
 VideoCapture TheVideoCapturer;
 // Create the vector marker to set the parameters of The Markers
-vector<Marker> TheMarkers;
+vector<Marker> TheMarkers0;
+vector<Marker> TheMarkers3;
 // create image frame of video of type Mat
 Mat TheInputImage, TheInputImageCopy, TheInputImageThCopy;
 // create the camera parameters to set ArUrco
@@ -39,8 +41,11 @@ int iCorrectionRate;
 int iDictionaryIndex;
 int iEnclosed = 0;
 int iShowAllCandidates = 0;
+int idMaker = 3;
 
-bool isVideo=false;
+bool isVideo = false;
+bool isFirst = true;
+bool isSecond = false;
 
 struct TimerAvrg
 {
@@ -129,7 +134,8 @@ void printMenuInfo(Mat &im, int i)
     float fs = float(im.cols) / float(1000);
     putText(im, "fps = " + to_string(1. / Fps.getAvrg()), Point(10, fs * 30), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
     putText(im, "Size Image: " + to_string(im.cols) + "x" + to_string(im.rows), Point(10, fs * 60), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
-    putText(im, "Tz: " + to_string(TheMarkers[i].Tvec.ptr<float>(2)[0]), Point(10, fs * 90), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
+    //putText(im, "Tz: " + to_string(TheMarkers0[i].Tvec.ptr<float>(2)[0]), Point(10, fs * 90), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
+    //putText(im, "Tz: " + to_string(TheMarkers3[i].Tvec.ptr<float>(2)[0]), Point(10, fs * 90), 1.5, 1.5, Scalar(255, 150, 0), 2.2);
     putText(im, "X", Point(FRAME_WIDTH / 2, FRAME_HEIGHT / 2), 1.2, 1.2, Scalar(0, 0, 255), 2);
 }
 
@@ -147,14 +153,16 @@ int main(int argc, char** argv)
         }   
 
         // selecting the best parameters for your problem
-        MDetector.loadParamsFromFile("/home/alantavares/aruco/utils/arucoConfig.yml");
+        MDetector0.loadParamsFromFile("/home/alantavares/aruco/utils/arucoConfig.yml");
+        MDetector3.loadParamsFromFile("/home/alantavares/aruco/utils/arucoConfig.yml");
 
         // set detect the marker size that is 0.326
-        float MarkerSize = 1.0f;
+        float MarkerSize0 = 1.0f;
+        float MarkerSize3 = 0.095f;
 
-        //TheVideoCapturer.open(1);
+        TheVideoCapturer.open(1);
         //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste1-marcador-03-640-480.mp4");
-        TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste2-marcador-03-1280-720.mp4");
+        //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste2-marcador-03-1280-720.mp4");
 
         // check video is open
         if (TheVideoCapturer.isOpened()){
@@ -170,7 +178,8 @@ int main(int argc, char** argv)
                 throw std::runtime_error("*****Could not open video*****");
         }
 
-        setParamsFromGlobalVariables(MDetector);
+        setParamsFromGlobalVariables(MDetector0);
+        setParamsFromGlobalVariables(MDetector3);
 
         int makerHistory = 0;
         // 1014 histórico de registro do marcador (NORMAL)
@@ -189,7 +198,8 @@ int main(int argc, char** argv)
 
             Fps.start();
             // detection with frame, parameters of camera e marker size
-            TheMarkers = MDetector.detect(TheInputImage, TheCameraParameters, MarkerSize);
+            TheMarkers0 = MDetector0.detect(TheInputImage, TheCameraParameters, MarkerSize0);
+            TheMarkers3 = MDetector3.detect(TheInputImage, TheCameraParameters, MarkerSize3);
             Fps.stop();
 
             // chekc the speed by calculating the mean speed of all iterations
@@ -198,81 +208,107 @@ int main(int argc, char** argv)
             // print marker info and draw the markers in image
             TheInputImage.copyTo(TheInputImageCopy);
 
-            if (iShowAllCandidates == 1)
-            {
-                auto candidates = MDetector.getCandidates();
-                for (auto cand : candidates)
-                    Marker(cand, -1).draw(TheInputImageCopy, Scalar(255, 0, 255));
-            }
+            // if (iShowAllCandidates == 1)
+            // {
+            //     auto candidates = MDetector0.getCandidates();
+            //     for (auto cand : candidates)
+            //         Marker(cand, -1).draw(TheInputImageCopy, Scalar(255, 0, 255));
+            // }
 
             // for each marker, draw info and its boundaries in the image
-            for (unsigned int i = 0; i < TheMarkers.size(); i++)
+            for (unsigned int i = 0; i < TheMarkers3.size(); i++)
             {
-                if (TheMarkers[i].id == 1) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                if (TheMarkers3[i].id == 1) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
                 {
                     // green
-                    //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 255, 0, 0), 2, CV_AA);
+                    if(isSecond){
+                        TheMarkers3[i].draw(TheInputImageCopy, Scalar(0, 255, 0, 0), 2, CV_AA);
+                    }
 
                     // red maker
-                    //TheMarkers[i].draw(TheInputImageCopy, Scalar(0, 0, 255, 0), 2, CV_AA);
+                    if (isFirst){
+                        TheMarkers3[i].draw(TheInputImageCopy, Scalar(0, 0, 255, 0), 2, CV_AA);
+                    }
 
                     //TheMarkers[i].contourPoints.[0];
                     //cout << " contourPoints[0]: " << TheMarkers[i].contourPoints[1] << endl;
                     
-                    Point2f cent(TheMarkers[i].getCenter());
+                    Point2f cent(TheMarkers3[i].getCenter());
                     //cout << " center: " << cent.x << " " << cent.y << endl;
                     //cout << " contourPoints: " << TheMarkers[i].contourPoints << " end" <<endl;
-                    cout << " size: " << TheMarkers[i].contourPoints.size() << endl;
-                    cout << " Center: " << TheMarkers[i].getCenter() << endl;
-                    cout << " Area: " << TheMarkers[i].getArea() << endl;
-                    cout << " Perimeter: " << TheMarkers[i].getPerimeter() << endl;
+                    //cout << " size: " << TheMarkers[i].contourPoints.size() << endl;
+                    //cout << " Center: " << TheMarkers[i].getCenter() << endl;
+                    cout << " Area: " << TheMarkers3[i].getArea() << endl;
+                    cout << " Perimeter: " << TheMarkers3[i].getPerimeter() << endl;
 
-                    vector<Marker> p0 = TheMarkers;
+                    vector<Marker> p0 = TheMarkers3;
+                    //cout << " Ponto[0]: " << p0[i][0].x << " " << p0[i][0].y << endl;
 
-                    for (unsigned int i = 0; i < TheMarkers.size(); i++)
-                    {
-                        cv::line(TheInputImageCopy, p0[i][0], p0[i][1], cvScalar(0, 255, 0), 3, CV_AA);
-                        
-                        cout << " Ponto[0]: " << p0[i][0].x << endl;
-                        p0[i][0].x =+10;
-                        cout << " Ponto[0]+10: " << p0[i][0].x << endl;
-                    }
+                    cout << " Rx: " << TheMarkers3[i].Rvec.ptr<float>(0)[0] << " rad "
+                         << " Em graus: " << (TheMarkers3[i].Rvec.ptr<float>(0)[0]) * (180.0f / 3.14f) << endl;
 
-                    if (TheMarkers[i].contourPoints.size() > 0)
-                        for (unsigned int j = 0; j < TheMarkers[i].contourPoints.size(); j++)
-                        {
-                            // putText(TheInputImageCopy, "X", 
-                            //         Point(TheMarkers[i].contourPoints[j].x,
-                            //               TheMarkers[i].contourPoints[j].y),
-                            //         1.2, 1.2, Scalar(255, 0, 0), 2);
+                    cout << " Ry: " << TheMarkers3[i].Rvec.ptr<float>(1)[0] << " rad " 
+                         << " Em graus: " << (TheMarkers3[i].Rvec.ptr<float>(1)[0])*(180.0f/3.14f) << endl;
 
-                            //Scalar color = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
-                            //rectangle(TheInputImageCopy, boundRect[j].tl(), boundRect[j].br(), color, 2, 8, 0);
-                        }
+                    cout << " Rz: " << TheMarkers3[i].Rvec.ptr<float>(2)[0] << " rad "
+                         << " Em graus: " << (TheMarkers3[i].Rvec.ptr<float>(2)[0]) * (180.0f / 3.14f) << endl;
+
+                    p0[i][0].x -= 120;
+                    p0[i][0].y -= 120;
+
+                    p0[i][1].x += 120;
+                    p0[i][1].y -= 120;
+
+                    p0[i][2].x += 120;
+                    p0[i][2].y += 120;
+
+                    p0[i][3].x -= 120;
+                    p0[i][3].y += 120;
+
+                    // cv::line(TheInputImageCopy, p0[i][0], p0[i][1], cvScalar(0, 255, 0), 3, CV_AA);
+                    // cv::line(TheInputImageCopy, p0[i][1], p0[i][2], cvScalar(0, 255, 0), 3, CV_AA);
+                    // cv::line(TheInputImageCopy, p0[i][2], p0[i][3], cvScalar(0, 255, 0), 3, CV_AA);
+                    // cv::line(TheInputImageCopy, p0[i][3], p0[i][0], cvScalar(0, 255, 0), 3, CV_AA);
 
                     makerHistory++;
                     //cout << " makerHistory: " << makerHistory << endl;
                     // translatio and rotation
-                    // cout << " LandMarker [" << TheMarkers[i].id << "]: " <<
-                    //     "  Tx: " << TheMarkers[i].Tvec.ptr<float>(0)[0] << " m "<<
-                    //     "\tTy: " << TheMarkers[i].Tvec.ptr<float>(1)[0] << " m "<<
-                    //     "\tTz: " << TheMarkers[i].Tvec.ptr<float>(2)[0] << " m "<< endl;
-                    //     // "\tRx: " << TheMarkers[i].Rvec.ptr<float>(0)[0] << " rad "<<
-                    //     // "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " rad "<<
-                    //     // "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " rad "<< endl;
+                    cout << " LandMarker [" << TheMarkers3[i].id << "]: "
+                         << "  Tx: " << TheMarkers3[i].Tvec.ptr<float>(0)[0] << " m "
+                         << "\tTy: " << TheMarkers3[i].Tvec.ptr<float>(1)[0] << " m "
+                         << "\tTz: " << TheMarkers3[i].Tvec.ptr<float>(2)[0] << " m "
+                         << "\tRx: " << TheMarkers3[i].Rvec.ptr<float>(0)[0] << " rad "
+                         << "\tRy: " << TheMarkers3[i].Rvec.ptr<float>(1)[0] << " rad "
+                         << "\tRz: " << TheMarkers3[i].Rvec.ptr<float>(2)[0] << " rad " << endl;
 
+                    if (TheMarkers3[i].getArea() < 150000 && TheMarkers3[i].getPerimeter() < 1500)
+                    {
+                        isFirst = false;
+                        cout << " first false " << endl;
+                        isSecond = true;
+                        cout << " second true " << endl;
+                        cout << " marcador3 ativado " << endl;
+                    }
+                    else{
+                        isFirst = true;
+                        cout << " first true " << endl;
+                        isSecond = false;
+                        cout << " second false " << endl;
+                        cout << " marcador3 desativado " << endl;
+                    }
+
+                    // // draw a 3d cube in each marker if there is 3d info
+                    if (TheCameraParameters.isValid() && MarkerSize3 != -1)
+                    {
+                        //CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers3[i], TheCameraParameters);
+                        //printMenuInfo(TheInputImageCopy, i);
+                        CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers3[i], TheCameraParameters);
+                    }
                 }
+
+                
             }
 
-            // // draw a 3d cube in each marker if there is 3d info
-            if (TheCameraParameters.isValid() && MarkerSize != -1)
-                for (unsigned int i = 0; i < TheMarkers.size(); i++)
-                {
-                    //CvDrawingUtils::draw3dCube(TheInputImage, TheMarkers[i], TheCameraParameters);
-                    printMenuInfo(TheInputImageCopy, i);
-                    //CvDrawingUtils::draw3dAxis(TheInputImage, TheMarkers[i], TheCameraParameters);
-                
-                }
 
             // show outputs with frame argumented information
             namedWindow("Video Aruco", CV_WINDOW_NORMAL);
@@ -283,7 +319,7 @@ int main(int argc, char** argv)
 
             // print marker info and draw the markers in image
             TheInputImageCopy.copyTo(TheInputImageThCopy);
-            TheInputImageThCopy = MDetector.getThresholdedImage();
+            TheInputImageThCopy = MDetector3.getThresholdedImage();
 
             // show outputs with ThresholdedImage argumented information
             namedWindow("Video thres", CV_WINDOW_NORMAL);
