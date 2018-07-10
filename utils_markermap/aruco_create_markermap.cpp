@@ -85,16 +85,16 @@ int main(int argc, char** argv)
             return -1;
         }
 
-        auto Dict = aruco::Dictionary::loadPredefined(cml("-d", "ALL_DICTS"));        
+        auto Dict = aruco::Dictionary::loadPredefined(cml("-d", "ARUCO_MIP_36h12"));
         int pixSize = stoi(cml("-s", "500"));
         int typeMarkerMap = stoi(cml("-t", "0"));
         int rand_seed = stoi(cml("-r", "0"));
-        float interMarkerDistance = stof(cml("-i", "0.2"));
-        if ((interMarkerDistance > 1.f) || (interMarkerDistance < 0.f))
-        {
-            cerr << "Incorrect interMarkerDistance '" << interMarkerDistance << "' -- needs to be [0,1]" << endl;
-            return -1;
-        }
+        float interMarkerDistance = stof(cml("-i", "0.5"));
+        // if ((interMarkerDistance > 1.f) || (interMarkerDistance < 0.f))
+        // {
+        //     cerr << "Incorrect interMarkerDistance '" << interMarkerDistance << "' -- needs to be [0,1]" << endl;
+        //     return -1;
+        // }
 
         // get the list of ids
 
