@@ -16,6 +16,8 @@ using namespace aruco;
 const int FRAME_WIDTH = 1280; //640;
 const int FRAME_HEIGHT = 720; //480;
 const int inputfps = 30;
+// const int FRAME_WIDTH = 640;
+// const int FRAME_HEIGHT = 480;
 
 // create the detector o set parameters 
 MarkerDetector MDetector0;
@@ -157,12 +159,17 @@ int main(int argc, char** argv)
         MDetector3.loadParamsFromFile("/home/alantavares/aruco/utils/arucoConfig.yml");
 
         // set detect the marker size that is 0.326
-        float MarkerSize0 = 1.0f;
-        float MarkerSize3 = 0.095f;
+        float MarkerSize3 = 1.0f;
+        float MarkerSize0 = 0.095f;
+        //1.0f - 0.095f;
 
-        TheVideoCapturer.open(1);
+        //TheVideoCapturer.open(1);
         //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste1-marcador-03-640-480.mp4");
         //TheVideoCapturer.open("/home/alantavares/Datasets/Novo-Marcador/teste2-marcador-03-1280-720.mp4");
+        TheVideoCapturer.open("/home/alantavares/Datasets/Marcador_3_0/dataset_1280x720.mp4");
+        //TheVideoCapturer.open("/home/alantavares/Datasets/Marcador_3_0/dataset_640x480.mp4");
+        //TheVideoCapturer.open("/home/alantavares/Datasets/Marcador_3_0/www.kizoa.com_dataset_1280x720.mp4");
+        //TheVideoCapturer.open("/home/alantavares/Datasets/Marcador_3_0/www.kizoa.com_dataset_640x480.mp4");
 
         // check video is open
         if (TheVideoCapturer.isOpened()){
@@ -218,7 +225,7 @@ int main(int argc, char** argv)
             // for each marker, draw info and its boundaries in the image
             for (unsigned int i = 0; i < TheMarkers3.size(); i++)
             {
-                if (TheMarkers3[i].id == 1) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
+                //if (TheMarkers3[i].id == 1) //|| TheMarkers[i].id == 1 || TheMarkers[i].id == 2 || TheMarkers[i].id == 3 || TheMarkers[i].id == 4 || TheMarkers[i].id == 5)
                 {
                     // green
                     if(isSecond){
@@ -281,7 +288,7 @@ int main(int argc, char** argv)
                          << "\tRy: " << TheMarkers3[i].Rvec.ptr<float>(1)[0] << " rad "
                          << "\tRz: " << TheMarkers3[i].Rvec.ptr<float>(2)[0] << " rad " << endl;
 
-                    if (TheMarkers3[i].getArea() < 150000 && TheMarkers3[i].getPerimeter() < 1500)
+                    if (TheMarkers3[i].getArea() < 8400 && TheMarkers3[i].getPerimeter() < 370)
                     {
                         isFirst = false;
                         cout << " first false " << endl;
@@ -302,7 +309,7 @@ int main(int argc, char** argv)
                     {
                         //CvDrawingUtils::draw3dCube(TheInputImageCopy, TheMarkers3[i], TheCameraParameters);
                         //printMenuInfo(TheInputImageCopy, i);
-                        CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers3[i], TheCameraParameters);
+                        //CvDrawingUtils::draw3dAxis(TheInputImageCopy, TheMarkers3[i], TheCameraParameters);
                     }
                 }
 
