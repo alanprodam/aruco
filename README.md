@@ -11,7 +11,7 @@ CONTACT: Rafael Munoz-Salinas: rmsalinas@uco.es
 
 For further info read https://www.uco.es/investiga/grupos/ava/node/26
 
-\section INTRODUCTION
+### INTRODUCTION
 
 The library allows to detect squared planar markers in images. A   marker is a squared element with a black border and a inner binary code inside. The set of valid codes is called dictionary. Several libraries have been proposed, and each one usually includes its own dictionary of valid markers. This version of Aruco allows to use the most famous dictionaries: ARUCO,APRILTAGS,ARTAG,CHILITAGS,ARTOOLKIT+, etc.
 
@@ -30,7 +30,7 @@ Additionally, marker maps can also extend to much larger environments. Imagine y
 For additional information to this README file, please visit our web page : http://www.uco.es/investiga/grupos/ava/node/26
 
 
-\section What's new in 3.x and how to port
+### What's new in 3.x and how to port
 
 See Changelog for a more detailed description
 		- Removed the use of the parameters for configuring the detection. Now, you only need to use MarkerDetector::setDetectionMode() to specify how fast you want to be.
@@ -54,7 +54,7 @@ Also important, from this moment, the axis point in the same direction as given 
 With respect to performance, we have improved in several aspects. First, all markers are now analized in parallel (if omp is enabled/found at compile time). Second, we have added a pyramid method for marker detection. Once detected rectangles in the first level, we create the canonical image in the pyramid level that achieves the best trade-off between quality and size. So, the call to wrap function is now more constant. So, you'll not notice decrease in performance as you approach a marker and it becomes bigger.
 
 
-\section COMPILING
+### COMPILING
 
 Use cmake.
 
@@ -85,11 +85,11 @@ You must set the cmake option -DBUILD_GLSAMPLES=ON in cmake. I.e., cmake .. -DBU
 In Ubuntu 16 Install first freeglut3 : sudo apt-get install freeglut3 freeglut3-dev
 
 
-\section TESTING
+### TESTING
 
 	Download the aruco test data from sourceforge and run the examples in the utils_xxx folders. Alternatively, windows user have a precompiled version. You have all the programs in the bin folder.
 	
-\section LIBRARY DESCRIPTION:
+### LIBRARY DESCRIPTION:
 
 The ArUco library contents are divided in several  directories. 
 
@@ -114,7 +114,7 @@ The library main classes are:
    - aruco::CvDrawingUtils: a class with some routines for drawing in opencv images
 
 
-\subsection Marker Maps
+### Marker Maps
 
 Marker maps exteds the concept of Board in the previous version of the library
 
@@ -128,7 +128,7 @@ However, for the case of the robot previouly explained, it is not known 3D the l
 
 
 
-\subsection APPLICATIONS
+### APPLICATIONS
 
 - The library comes with several applications that will help you to learn how to use the library:
  -# utils/aruco_print_marker: which creates marker and saves it in a jpg file you can print.
@@ -155,9 +155,9 @@ However, for the case of the robot previouly explained, it is not known 3D the l
  
  NOTE ON OPENGL: The library supports  the integration with OpenGL. In order to compile with support for OpenGL, you just have  installed in your system the develop packages for GL and glut (or freeglut).
  
-\section Dictionaries and Speed
+### Dictionaries and Speed
 
-\subsection Dictionaries
+### Dictionaries
 
 Aruco version 3 is able to detect from a wide variety of dictionaries. The valid dictionaries are enumerated in Dictionary::DICT_TYPES (dictionary.h). As you can see, we a specific dictionary  named ALL_DICTS. By default, MarkerDetector is a configured in this dictionary. It is not really a dictionary but a metadictionary that represent all the valid ones that the library can detect. So, an user that does not know much about the library can work easily. 
 
@@ -168,7 +168,7 @@ If you work using  ALL_DICTS instead of the one you really are using, there are 
 Finally, it is important to indicate that Marker::dict_info will tell you the dictionary a marker belong (this is new in version 3).
 
 
-\subsection Speed
+### Speed
 
 ArUco version 3 main changes are related to speed and to ease of usage. To do so, we define two main concepts:  Minimum Marker Size and Detection Mode.
  
@@ -192,7 +192,7 @@ void MarkerDetector::setDetectionMode( DetectionMode dm,float minMarkerSize=0);
 before detecting markers.
 
  
-\section Calibration
+### Calibration
 
 Camera calibration is a required step if you want to estimate the location of your camera. Aruco has its own calibration board that has an advantage over the classical opencv chessboard: since it is composed by several markers, you do not need to see it completely in order to obtain calibration points. Instead, you can see if partially and still works. This is a very convenient feature in many applications. You have programs in utils_calibration to use calibrate using our chessboard.
 
@@ -210,7 +210,7 @@ the parameter mycalibrationfile.yml will be the output of the process. The param
 
 
 
-\section Custom Dictionaries
+### Custom Dictionaries
 
 Aruco allows to use your own dictionaries. To do so, first write the definition of your dictionary. Imagine you want to create a dictionary of 3 markers with size 3x3 bits .
 
