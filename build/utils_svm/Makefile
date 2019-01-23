@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alantavares/aruco
+CMAKE_SOURCE_DIR = /home/victor/aruco
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alantavares/aruco/build
+CMAKE_BINARY_DIR = /home/victor/aruco/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -124,14 +124,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/alantavares/aruco/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles /home/alantavares/aruco/build/utils_svm/CMakeFiles/progress.marks
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	cd /home/victor/aruco/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles /home/victor/aruco/build/utils_svm/CMakeFiles/progress.marks
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/clean
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/clean
 .PHONY : clean
 
 # The main clean target
@@ -141,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/preinstall
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/preinstall
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/alantavares/aruco/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/victor/aruco/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 utils_svm/CMakeFiles/aruco_test_svm.dir/rule:
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/CMakeFiles/aruco_test_svm.dir/rule
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_svm/CMakeFiles/aruco_test_svm.dir/rule
 .PHONY : utils_svm/CMakeFiles/aruco_test_svm.dir/rule
 
 # Convenience name for target.
@@ -166,7 +166,7 @@ aruco_test_svm: utils_svm/CMakeFiles/aruco_test_svm.dir/rule
 
 # fast build rule for target.
 aruco_test_svm/fast:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/build
+	cd /home/victor/aruco/build && $(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/build
 .PHONY : aruco_test_svm/fast
 
 aruco_test_svm.o: aruco_test_svm.cpp.o
@@ -175,7 +175,7 @@ aruco_test_svm.o: aruco_test_svm.cpp.o
 
 # target to build an object file
 aruco_test_svm.cpp.o:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/aruco_test_svm.cpp.o
+	cd /home/victor/aruco/build && $(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/aruco_test_svm.cpp.o
 .PHONY : aruco_test_svm.cpp.o
 
 aruco_test_svm.i: aruco_test_svm.cpp.i
@@ -184,7 +184,7 @@ aruco_test_svm.i: aruco_test_svm.cpp.i
 
 # target to preprocess a source file
 aruco_test_svm.cpp.i:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/aruco_test_svm.cpp.i
+	cd /home/victor/aruco/build && $(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/aruco_test_svm.cpp.i
 .PHONY : aruco_test_svm.cpp.i
 
 aruco_test_svm.s: aruco_test_svm.cpp.s
@@ -193,7 +193,7 @@ aruco_test_svm.s: aruco_test_svm.cpp.s
 
 # target to generate assembly for a file
 aruco_test_svm.cpp.s:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/aruco_test_svm.cpp.s
+	cd /home/victor/aruco/build && $(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/aruco_test_svm.cpp.s
 .PHONY : aruco_test_svm.cpp.s
 
 # Help Target
@@ -223,6 +223,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/alantavares/aruco/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/victor/aruco/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

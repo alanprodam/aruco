@@ -1038,11 +1038,11 @@ vector
 iostream
 -
 
-/home/alantavares/aruco/utils_markermap/aruco_test_markermap.cpp
+/home/victor/aruco/utils_markermap/aruco_test_markermap.cpp
 aruco.h
-/home/alantavares/aruco/utils_markermap/aruco.h
+/home/victor/aruco/utils_markermap/aruco.h
 timers.h
-/home/alantavares/aruco/utils_markermap/timers.h
+/home/victor/aruco/utils_markermap/timers.h
 fstream
 -
 iostream
@@ -1060,11 +1060,11 @@ stdexcept
 Eigen/Geometry
 -
 sglviewer.h
-/home/alantavares/aruco/utils_markermap/sglviewer.h
+/home/victor/aruco/utils_markermap/sglviewer.h
 
-/home/alantavares/aruco/utils_markermap/pcdwriter.cpp
+/home/victor/aruco/utils_markermap/pcdwriter.cpp
 markermap.h
-/home/alantavares/aruco/utils_markermap/markermap.h
+/home/victor/aruco/utils_markermap/markermap.h
 fstream
 -
 map
@@ -1074,7 +1074,7 @@ opencv2/calib3d/calib3d.hpp
 opencv2/imgproc/imgproc.hpp
 -
 
-/home/alantavares/aruco/utils_markermap/sgl.h
+/home/victor/aruco/utils_markermap/sgl.h
 memory
 -
 cstring
@@ -1088,15 +1088,15 @@ iostream
 vector
 -
 
-/home/alantavares/aruco/utils_markermap/sglviewer.h
+/home/victor/aruco/utils_markermap/sglviewer.h
 sgl.h
-/home/alantavares/aruco/utils_markermap/sgl.h
+/home/victor/aruco/utils_markermap/sgl.h
 opencv2/highgui/highgui.hpp
 -
 opencv2/imgproc/imgproc.hpp
 -
 markermap.h
-/home/alantavares/aruco/utils_markermap/markermap.h
+/home/victor/aruco/utils_markermap/markermap.h
 string
 -
 thread

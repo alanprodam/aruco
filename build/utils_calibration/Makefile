@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alantavares/aruco
+CMAKE_SOURCE_DIR = /home/victor/aruco
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alantavares/aruco/build
+CMAKE_BINARY_DIR = /home/victor/aruco/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -124,14 +124,14 @@ install/strip/fast: install/strip
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/alantavares/aruco/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles /home/alantavares/aruco/build/utils_calibration/CMakeFiles/progress.marks
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	cd /home/victor/aruco/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles /home/victor/aruco/build/utils_calibration/CMakeFiles/progress.marks
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/clean
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/clean
 .PHONY : clean
 
 # The main clean target
@@ -141,22 +141,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/preinstall
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/preinstall
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/alantavares/aruco/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/victor/aruco/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/rule:
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/rule
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/rule
 .PHONY : utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/rule
 
 # Convenience name for target.
@@ -166,12 +166,12 @@ aruco_calibration_fromimages: utils_calibration/CMakeFiles/aruco_calibration_fro
 
 # fast build rule for target.
 aruco_calibration_fromimages/fast:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build
 .PHONY : aruco_calibration_fromimages/fast
 
 # Convenience name for target.
 utils_calibration/CMakeFiles/aruco_calibration.dir/rule:
-	cd /home/alantavares/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/CMakeFiles/aruco_calibration.dir/rule
+	cd /home/victor/aruco/build && $(MAKE) -f CMakeFiles/Makefile2 utils_calibration/CMakeFiles/aruco_calibration.dir/rule
 .PHONY : utils_calibration/CMakeFiles/aruco_calibration.dir/rule
 
 # Convenience name for target.
@@ -181,7 +181,7 @@ aruco_calibration: utils_calibration/CMakeFiles/aruco_calibration.dir/rule
 
 # fast build rule for target.
 aruco_calibration/fast:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/build
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/build
 .PHONY : aruco_calibration/fast
 
 aruco_calibration.o: aruco_calibration.cpp.o
@@ -190,7 +190,7 @@ aruco_calibration.o: aruco_calibration.cpp.o
 
 # target to build an object file
 aruco_calibration.cpp.o:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o
 .PHONY : aruco_calibration.cpp.o
 
 aruco_calibration.i: aruco_calibration.cpp.i
@@ -199,7 +199,7 @@ aruco_calibration.i: aruco_calibration.cpp.i
 
 # target to preprocess a source file
 aruco_calibration.cpp.i:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.i
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.i
 .PHONY : aruco_calibration.cpp.i
 
 aruco_calibration.s: aruco_calibration.cpp.s
@@ -208,7 +208,7 @@ aruco_calibration.s: aruco_calibration.cpp.s
 
 # target to generate assembly for a file
 aruco_calibration.cpp.s:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.s
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.s
 .PHONY : aruco_calibration.cpp.s
 
 aruco_calibration_fromimages.o: aruco_calibration_fromimages.cpp.o
@@ -217,7 +217,7 @@ aruco_calibration_fromimages.o: aruco_calibration_fromimages.cpp.o
 
 # target to build an object file
 aruco_calibration_fromimages.cpp.o:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/aruco_calibration_fromimages.cpp.o
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/aruco_calibration_fromimages.cpp.o
 .PHONY : aruco_calibration_fromimages.cpp.o
 
 aruco_calibration_fromimages.i: aruco_calibration_fromimages.cpp.i
@@ -226,7 +226,7 @@ aruco_calibration_fromimages.i: aruco_calibration_fromimages.cpp.i
 
 # target to preprocess a source file
 aruco_calibration_fromimages.cpp.i:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/aruco_calibration_fromimages.cpp.i
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/aruco_calibration_fromimages.cpp.i
 .PHONY : aruco_calibration_fromimages.cpp.i
 
 aruco_calibration_fromimages.s: aruco_calibration_fromimages.cpp.s
@@ -235,7 +235,7 @@ aruco_calibration_fromimages.s: aruco_calibration_fromimages.cpp.s
 
 # target to generate assembly for a file
 aruco_calibration_fromimages.cpp.s:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/aruco_calibration_fromimages.cpp.s
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/aruco_calibration_fromimages.cpp.s
 .PHONY : aruco_calibration_fromimages.cpp.s
 
 calibrator.o: calibrator.cpp.o
@@ -244,7 +244,7 @@ calibrator.o: calibrator.cpp.o
 
 # target to build an object file
 calibrator.cpp.o:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.o
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.o
 .PHONY : calibrator.cpp.o
 
 calibrator.i: calibrator.cpp.i
@@ -253,7 +253,7 @@ calibrator.i: calibrator.cpp.i
 
 # target to preprocess a source file
 calibrator.cpp.i:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.i
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.i
 .PHONY : calibrator.cpp.i
 
 calibrator.s: calibrator.cpp.s
@@ -262,7 +262,7 @@ calibrator.s: calibrator.cpp.s
 
 # target to generate assembly for a file
 calibrator.cpp.s:
-	cd /home/alantavares/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.s
+	cd /home/victor/aruco/build && $(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.s
 .PHONY : calibrator.cpp.s
 
 # Help Target
@@ -299,6 +299,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/alantavares/aruco/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/victor/aruco/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

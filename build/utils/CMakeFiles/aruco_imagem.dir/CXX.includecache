@@ -108,9 +108,9 @@ map
 opencv2/core/core.hpp
 -
 
-/home/alantavares/aruco/utils/aruco_imagem.cpp
+/home/victor/aruco/utils/aruco_imagem.cpp
 aruco.h
-/home/alantavares/aruco/utils/aruco.h
+/home/victor/aruco/utils/aruco.h
 opencv2/flann.hpp
 -
 opencv2/core.hpp

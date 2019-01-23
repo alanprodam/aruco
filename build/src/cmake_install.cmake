@@ -1,4 +1,4 @@
-# Install script for directory: /home/alantavares/aruco/src
+# Install script for directory: /home/victor/aruco/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -46,9 +46,9 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "main")
     endif()
   endforeach()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE FILES
-    "/home/alantavares/aruco/build/src/libaruco.so.3.0.10"
-    "/home/alantavares/aruco/build/src/libaruco.so.3.0"
-    "/home/alantavares/aruco/build/src/libaruco.so"
+    "/home/victor/aruco/build/src/libaruco.so.3.0.10"
+    "/home/victor/aruco/build/src/libaruco.so.3.0"
+    "/home/victor/aruco/build/src/libaruco.so"
     )
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libaruco.so.3.0.10"
@@ -70,21 +70,21 @@ endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/aruco" TYPE FILE FILES
-    "/home/alantavares/aruco/src/aruco_export.h"
-    "/home/alantavares/aruco/src/cameraparameters.h"
-    "/home/alantavares/aruco/src/cvdrawingutils.h"
-    "/home/alantavares/aruco/src/dictionary.h"
-    "/home/alantavares/aruco/src/ippe.h"
-    "/home/alantavares/aruco/src/marker.h"
-    "/home/alantavares/aruco/src/markerdetector.h"
-    "/home/alantavares/aruco/src/markerlabeler.h"
-    "/home/alantavares/aruco/src/markermap.h"
-    "/home/alantavares/aruco/src/posetracker.h"
-    "/home/alantavares/aruco/src/markerlabelers/dictionary_based.h"
-    "/home/alantavares/aruco/src/timers.h"
-    "/home/alantavares/aruco/src/debug.h"
-    "/home/alantavares/aruco/src/aruco.h"
-    "/home/alantavares/aruco/src/markerlabelers/svmmarkers.h"
+    "/home/victor/aruco/src/aruco_export.h"
+    "/home/victor/aruco/src/cameraparameters.h"
+    "/home/victor/aruco/src/cvdrawingutils.h"
+    "/home/victor/aruco/src/dictionary.h"
+    "/home/victor/aruco/src/ippe.h"
+    "/home/victor/aruco/src/marker.h"
+    "/home/victor/aruco/src/markerdetector.h"
+    "/home/victor/aruco/src/markerlabeler.h"
+    "/home/victor/aruco/src/markermap.h"
+    "/home/victor/aruco/src/posetracker.h"
+    "/home/victor/aruco/src/markerlabelers/dictionary_based.h"
+    "/home/victor/aruco/src/timers.h"
+    "/home/victor/aruco/src/debug.h"
+    "/home/victor/aruco/src/aruco.h"
+    "/home/victor/aruco/src/markerlabelers/svmmarkers.h"
     )
 endif()
 

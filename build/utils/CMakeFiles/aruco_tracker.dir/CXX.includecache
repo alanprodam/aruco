@@ -108,13 +108,13 @@ map
 opencv2/core/core.hpp
 -
 
-/home/alantavares/aruco/utils/aruco_tracker.cpp
+/home/victor/aruco/utils/aruco_tracker.cpp
 string
 -
 aruco.h
-/home/alantavares/aruco/utils/aruco.h
+/home/victor/aruco/utils/aruco.h
 cvdrawingutils.h
-/home/alantavares/aruco/utils/cvdrawingutils.h
+/home/victor/aruco/utils/cvdrawingutils.h
 iostream
 -
 opencv2/highgui/highgui.hpp

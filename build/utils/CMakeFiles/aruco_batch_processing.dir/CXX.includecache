@@ -136,15 +136,15 @@ sys/stat.h
 errno.h
 -
 
-/home/alantavares/aruco/utils/aruco_batch_processing.cpp
+/home/victor/aruco/utils/aruco_batch_processing.cpp
 win_dirent.h
 -
 dirent.h
 -
 aruco.h
-/home/alantavares/aruco/utils/aruco.h
+/home/victor/aruco/utils/aruco.h
 ippe.h
-/home/alantavares/aruco/utils/ippe.h
+/home/victor/aruco/utils/ippe.h
 iostream
 -
 fstream

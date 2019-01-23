@@ -32,9 +32,9 @@ string
 vector
 -
 
-/home/alantavares/aruco/utils_markermap/aruco_markermap_pix2meters.cpp
+/home/victor/aruco/utils_markermap/aruco_markermap_pix2meters.cpp
 markermap.h
-/home/alantavares/aruco/utils_markermap/markermap.h
+/home/victor/aruco/utils_markermap/markermap.h
 iostream
 -
 

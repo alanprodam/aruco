@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/alantavares/aruco/utils_calibration/aruco_calibration.cpp" "/home/alantavares/aruco/build/utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o"
-  "/home/alantavares/aruco/utils_calibration/calibrator.cpp" "/home/alantavares/aruco/build/utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.o"
+  "/home/victor/aruco/utils_calibration/aruco_calibration.cpp" "/home/victor/aruco/build/utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o"
+  "/home/victor/aruco/utils_calibration/calibrator.cpp" "/home/victor/aruco/build/utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -30,7 +30,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/alantavares/aruco/build/src/CMakeFiles/aruco.dir/DependInfo.cmake"
+  "/home/victor/aruco/build/src/CMakeFiles/aruco.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

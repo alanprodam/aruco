@@ -700,21 +700,21 @@ lapacke_mangling.h
 
 ../3rdparty/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
 
-/home/alantavares/aruco/src/aruco.h
+/home/victor/aruco/src/aruco.h
 markerdetector.h
-/home/alantavares/aruco/src/markerdetector.h
+/home/victor/aruco/src/markerdetector.h
 posetracker.h
-/home/alantavares/aruco/src/posetracker.h
+/home/victor/aruco/src/posetracker.h
 cvdrawingutils.h
-/home/alantavares/aruco/src/cvdrawingutils.h
+/home/victor/aruco/src/cvdrawingutils.h
 dictionary.h
-/home/alantavares/aruco/src/dictionary.h
+/home/victor/aruco/src/dictionary.h
 
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 
-/home/alantavares/aruco/src/cameraparameters.cpp
+/home/victor/aruco/src/cameraparameters.cpp
 cameraparameters.h
-/home/alantavares/aruco/src/cameraparameters.h
+/home/victor/aruco/src/cameraparameters.h
 opencv2/calib3d/calib3d.hpp
 -
 opencv2/core/core.hpp
@@ -724,9 +724,9 @@ fstream
 iostream
 -
 
-/home/alantavares/aruco/src/cameraparameters.h
+/home/victor/aruco/src/cameraparameters.h
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 opencv2/core/core.hpp
 -
 string
@@ -734,29 +734,29 @@ string
 stdexcept
 -
 
-/home/alantavares/aruco/src/cvdrawingutils.cpp
+/home/victor/aruco/src/cvdrawingutils.cpp
 opencv2/calib3d/calib3d.hpp
 -
 opencv2/imgproc/imgproc.hpp
 -
 cvdrawingutils.h
-/home/alantavares/aruco/src/cvdrawingutils.h
+/home/victor/aruco/src/cvdrawingutils.h
 cameraparameters.h
-/home/alantavares/aruco/src/cameraparameters.h
+/home/victor/aruco/src/cameraparameters.h
 
-/home/alantavares/aruco/src/cvdrawingutils.h
+/home/victor/aruco/src/cvdrawingutils.h
 aruco.h
-/home/alantavares/aruco/src/aruco.h
+/home/victor/aruco/src/aruco.h
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 
-/home/alantavares/aruco/src/debug.cpp
+/home/victor/aruco/src/debug.cpp
 debug.h
-/home/alantavares/aruco/src/debug.h
+/home/victor/aruco/src/debug.h
 fstream
 -
 
-/home/alantavares/aruco/src/debug.h
+/home/victor/aruco/src/debug.h
 iostream
 -
 fstream
@@ -764,15 +764,15 @@ fstream
 ctime
 -
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 map
 -
 string
 -
 
-/home/alantavares/aruco/src/dictionary.cpp
+/home/victor/aruco/src/dictionary.cpp
 dictionary.h
-/home/alantavares/aruco/src/dictionary.h
+/home/victor/aruco/src/dictionary.h
 exception
 -
 stdint.h
@@ -788,15 +788,15 @@ bitset
 opencv2/imgproc/imgproc.hpp
 -
 markermap.h
-/home/alantavares/aruco/src/markermap.h
+/home/victor/aruco/src/markermap.h
 set
 -
 stdexcept
 -
 
-/home/alantavares/aruco/src/dictionary.h
+/home/victor/aruco/src/dictionary.h
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 opencv2/core/core.hpp
 -
 iostream
@@ -810,21 +810,21 @@ string
 vector
 -
 
-/home/alantavares/aruco/src/ippe.cpp
+/home/victor/aruco/src/ippe.cpp
 ippe.h
-/home/alantavares/aruco/src/ippe.h
+/home/victor/aruco/src/ippe.h
 opencv2/calib3d/calib3d.hpp
 -
 opencv2/imgproc/imgproc.hpp
 -
 
-/home/alantavares/aruco/src/ippe.h
+/home/victor/aruco/src/ippe.h
 opencv2/core/core.hpp
 -
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 
-/home/alantavares/aruco/src/levmarq.h
+/home/victor/aruco/src/levmarq.h
 Eigen/Core
 -
 Eigen/Cholesky
@@ -846,9 +846,9 @@ chrono
 iomanip
 -
 
-/home/alantavares/aruco/src/marker.cpp
+/home/victor/aruco/src/marker.cpp
 marker.h
-/home/alantavares/aruco/src/marker.h
+/home/victor/aruco/src/marker.h
 opencv2/calib3d/calib3d.hpp
 -
 opencv2/imgproc/imgproc.hpp
@@ -858,13 +858,13 @@ cstdio
 math.h
 -
 cameraparameters.h
-/home/alantavares/aruco/src/cameraparameters.h
+/home/victor/aruco/src/cameraparameters.h
 ippe.h
-/home/alantavares/aruco/src/ippe.h
+/home/victor/aruco/src/ippe.h
 
-/home/alantavares/aruco/src/marker.h
+/home/victor/aruco/src/marker.h
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 opencv2/core/core.hpp
 -
 cstdint
@@ -874,15 +874,15 @@ iostream
 vector
 -
 
-/home/alantavares/aruco/src/markerdetector.cpp
+/home/victor/aruco/src/markerdetector.cpp
 markerdetector.h
-/home/alantavares/aruco/src/markerdetector.h
+/home/victor/aruco/src/markerdetector.h
 cameraparameters.h
-/home/alantavares/aruco/src/cameraparameters.h
+/home/victor/aruco/src/cameraparameters.h
 markerlabeler.h
-/home/alantavares/aruco/src/markerlabeler.h
+/home/victor/aruco/src/markerlabeler.h
 timers.h
-/home/alantavares/aruco/src/timers.h
+/home/victor/aruco/src/timers.h
 opencv2/core/core.hpp
 -
 opencv2/imgproc/imgproc.hpp
@@ -900,13 +900,13 @@ chrono
 thread
 -
 debug.h
-/home/alantavares/aruco/src/debug.h
+/home/victor/aruco/src/debug.h
 opencv2/highgui/highgui.hpp
 -
 
-/home/alantavares/aruco/src/markerdetector.h
+/home/victor/aruco/src/markerdetector.h
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 opencv2/core/core.hpp
 -
 cstdio
@@ -922,27 +922,27 @@ condition_variable
 vector
 -
 marker.h
-/home/alantavares/aruco/src/marker.h
+/home/victor/aruco/src/marker.h
 
-/home/alantavares/aruco/src/markerlabeler.cpp
+/home/victor/aruco/src/markerlabeler.cpp
 markerlabeler.h
-/home/alantavares/aruco/src/markerlabeler.h
+/home/victor/aruco/src/markerlabeler.h
 markerlabelers/svmmarkers.h
-/home/alantavares/aruco/src/markerlabelers/svmmarkers.h
+/home/victor/aruco/src/markerlabelers/svmmarkers.h
 markerlabelers/dictionary_based.h
-/home/alantavares/aruco/src/markerlabelers/dictionary_based.h
+/home/victor/aruco/src/markerlabelers/dictionary_based.h
 
-/home/alantavares/aruco/src/markerlabeler.h
+/home/victor/aruco/src/markerlabeler.h
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 dictionary.h
-/home/alantavares/aruco/src/dictionary.h
+/home/victor/aruco/src/dictionary.h
 opencv2/core/core.hpp
 -
 
-/home/alantavares/aruco/src/markerlabelers/dictionary_based.cpp
+/home/victor/aruco/src/markerlabelers/dictionary_based.cpp
 dictionary_based.h
-/home/alantavares/aruco/src/markerlabelers/dictionary_based.h
+/home/victor/aruco/src/markerlabelers/dictionary_based.h
 opencv2/imgproc/imgproc.hpp
 -
 bitset
@@ -950,17 +950,17 @@ bitset
 cmath
 -
 
-/home/alantavares/aruco/src/markerlabelers/dictionary_based.h
+/home/victor/aruco/src/markerlabelers/dictionary_based.h
 ../dictionary.h
-/home/alantavares/aruco/src/dictionary.h
+/home/victor/aruco/src/dictionary.h
 ../markerlabeler.h
-/home/alantavares/aruco/src/markerlabeler.h
+/home/victor/aruco/src/markerlabeler.h
 opencv2/core/core.hpp
 -
 
-/home/alantavares/aruco/src/markerlabelers/svmmarkers.cpp
+/home/victor/aruco/src/markerlabelers/svmmarkers.cpp
 svmmarkers.h
-/home/alantavares/aruco/src/markerlabelers/svmmarkers.h
+/home/victor/aruco/src/markerlabelers/svmmarkers.h
 iostream
 -
 vector
@@ -980,15 +980,15 @@ opencv2/ml/ml.hpp
 iostream
 -
 
-/home/alantavares/aruco/src/markerlabelers/svmmarkers.h
+/home/victor/aruco/src/markerlabelers/svmmarkers.h
 ../markerlabeler.h
-/home/alantavares/aruco/src/markerlabeler.h
+/home/victor/aruco/src/markerlabeler.h
 
-/home/alantavares/aruco/src/markermap.cpp
+/home/victor/aruco/src/markermap.cpp
 markermap.h
-/home/alantavares/aruco/src/markermap.h
+/home/victor/aruco/src/markermap.h
 dictionary.h
-/home/alantavares/aruco/src/dictionary.h
+/home/victor/aruco/src/dictionary.h
 opencv2/calib3d/calib3d.hpp
 -
 opencv2/imgproc/imgproc.hpp
@@ -996,11 +996,11 @@ opencv2/imgproc/imgproc.hpp
 fstream
 -
 
-/home/alantavares/aruco/src/markermap.h
+/home/victor/aruco/src/markermap.h
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 marker.h
-/home/alantavares/aruco/src/marker.h
+/home/victor/aruco/src/marker.h
 opencv2/core/core.hpp
 -
 string
@@ -1008,33 +1008,33 @@ string
 vector
 -
 
-/home/alantavares/aruco/src/posetracker.cpp
+/home/victor/aruco/src/posetracker.cpp
 posetracker.h
-/home/alantavares/aruco/src/posetracker.h
+/home/victor/aruco/src/posetracker.h
 ippe.h
-/home/alantavares/aruco/src/ippe.h
+/home/victor/aruco/src/ippe.h
 set
 -
 levmarq.h
-/home/alantavares/aruco/src/levmarq.h
+/home/victor/aruco/src/levmarq.h
 opencv2/calib3d/calib3d.hpp
 -
 
-/home/alantavares/aruco/src/posetracker.h
+/home/victor/aruco/src/posetracker.h
 aruco_export.h
-/home/alantavares/aruco/src/aruco_export.h
+/home/victor/aruco/src/aruco_export.h
 cameraparameters.h
-/home/alantavares/aruco/src/cameraparameters.h
+/home/victor/aruco/src/cameraparameters.h
 marker.h
-/home/alantavares/aruco/src/marker.h
+/home/victor/aruco/src/marker.h
 markermap.h
-/home/alantavares/aruco/src/markermap.h
+/home/victor/aruco/src/markermap.h
 map
 -
 opencv2/core/core.hpp
 -
 
-/home/alantavares/aruco/src/timers.h
+/home/victor/aruco/src/timers.h
 chrono
 -
 string

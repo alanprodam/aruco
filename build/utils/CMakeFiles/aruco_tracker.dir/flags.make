@@ -6,5 +6,5 @@ CXX_FLAGS = -g3 -O0 -DDEBUG -D_DEBUG -W -Wextra -Wno-return-type -Wall   -std=gn
 
 CXX_DEFINES = -DDOUBLE_PRECISION_PNP -DUSE_MMX -DUSE_SSE -DUSE_SSE2 -DUSE_SVM_LABELER
 
-CXX_INCLUDES = -I/home/alantavares/aruco/build/utils -I/home/alantavares/aruco/utils -isystem /opt/ros/kinetic/include/opencv-3.3.1-dev -isystem /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv -I/home/alantavares/aruco/3rdparty/eigen3 -I/home/alantavares/aruco/src 
+CXX_INCLUDES = -I/home/victor/aruco/build/utils -I/home/victor/aruco/utils -isystem /opt/ros/kinetic/include/opencv-3.3.1-dev -isystem /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv -I/home/victor/aruco/3rdparty/eigen3 -I/home/victor/aruco/src 
 

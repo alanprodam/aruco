@@ -108,19 +108,19 @@ map
 opencv2/core/core.hpp
 -
 
-/home/alantavares/aruco/utils/aruco_video.cpp
+/home/victor/aruco/utils/aruco_video.cpp
 aruco.h
-/home/alantavares/aruco/utils/aruco.h
+/home/victor/aruco/utils/aruco.h
 opencv2/flann.hpp
 -
 opencv2/core.hpp
 -
 opencv2/video/tracking.hpp
-/home/alantavares/aruco/utils/opencv2/video/tracking.hpp
+/home/victor/aruco/utils/opencv2/video/tracking.hpp
 opencv2/imgproc/imgproc.hpp
-/home/alantavares/aruco/utils/opencv2/imgproc/imgproc.hpp
+/home/victor/aruco/utils/opencv2/imgproc/imgproc.hpp
 opencv2/highgui/highgui.hpp
-/home/alantavares/aruco/utils/opencv2/highgui/highgui.hpp
+/home/victor/aruco/utils/opencv2/highgui/highgui.hpp
 vector
 -
 iostream

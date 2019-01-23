@@ -130,7 +130,7 @@ sys/stat.h
 errno.h
 -
 
-/home/alantavares/aruco/utils_calibration/aruco_calibration_fromimages.cpp
+/home/victor/aruco/utils_calibration/aruco_calibration_fromimages.cpp
 algorithm
 -
 fstream
@@ -146,9 +146,9 @@ opencv2/imgproc/imgproc.hpp
 sstream
 -
 aruco.h
-/home/alantavares/aruco/utils_calibration/aruco.h
+/home/victor/aruco/utils_calibration/aruco.h
 aruco_calibration_grid_board_a4.h
-/home/alantavares/aruco/utils_calibration/aruco_calibration_grid_board_a4.h
+/home/victor/aruco/utils_calibration/aruco_calibration_grid_board_a4.h
 win_dirent.h
 -
 dirent.h
@@ -156,7 +156,7 @@ dirent.h
 stdexcept
 -
 
-/home/alantavares/aruco/utils_calibration/aruco_calibration_grid_board_a4.h
+/home/victor/aruco/utils_calibration/aruco_calibration_grid_board_a4.h
 
 /opt/ros/kinetic/include/opencv-3.3.1-dev/opencv/cxcore.h
 opencv2/core/core_c.h

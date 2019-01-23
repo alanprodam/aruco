@@ -1,6 +1,6 @@
 
-libdir=/home/alantavares/aruco/build
-includedir=/home/alantavares/aruco/src
+libdir=/home/victor/aruco/build
+includedir=/home/victor/aruco/src
 
 Name: aruco
 Description: ArUco: a minimal library for Augmented Reality applications based on OpenCv, uninstalled Version.

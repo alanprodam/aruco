@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/alantavares/aruco/utils/SearchMovement.cpp
+/home/victor/aruco/utils/SearchMovement.cpp
 opencv2/video/tracking.hpp
-/home/alantavares/aruco/utils/opencv2/video/tracking.hpp
+/home/victor/aruco/utils/opencv2/video/tracking.hpp
 opencv2/imgproc/imgproc.hpp
-/home/alantavares/aruco/utils/opencv2/imgproc/imgproc.hpp
+/home/victor/aruco/utils/opencv2/imgproc/imgproc.hpp
 opencv2/highgui/highgui.hpp
-/home/alantavares/aruco/utils/opencv2/highgui/highgui.hpp
+/home/victor/aruco/utils/opencv2/highgui/highgui.hpp
 iostream
 -
 ctype.h

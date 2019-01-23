@@ -48,11 +48,11 @@ string
 vector
 -
 
-/home/alantavares/aruco/utils_markermap/aruco_create_markermap.cpp
+/home/victor/aruco/utils_markermap/aruco_create_markermap.cpp
 dictionary.h
-/home/alantavares/aruco/utils_markermap/dictionary.h
+/home/victor/aruco/utils_markermap/dictionary.h
 markermap.h
-/home/alantavares/aruco/utils_markermap/markermap.h
+/home/victor/aruco/utils_markermap/markermap.h
 cstdio
 -
 opencv2/core/core.hpp

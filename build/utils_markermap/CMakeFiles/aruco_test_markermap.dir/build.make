@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alantavares/aruco
+CMAKE_SOURCE_DIR = /home/victor/aruco
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alantavares/aruco/build
+CMAKE_BINARY_DIR = /home/victor/aruco/build
 
 # Include any dependencies generated for this target.
 include utils_markermap/CMakeFiles/aruco_test_markermap.dir/depend.make
@@ -59,16 +59,16 @@ include utils_markermap/CMakeFiles/aruco_test_markermap.dir/flags.make
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.o: utils_markermap/CMakeFiles/aruco_test_markermap.dir/flags.make
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.o: ../utils_markermap/aruco_test_markermap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object utils_markermap/CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.o"
-	cd /home/alantavares/aruco/build/utils_markermap && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.o -c /home/alantavares/aruco/utils_markermap/aruco_test_markermap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object utils_markermap/CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.o"
+	cd /home/victor/aruco/build/utils_markermap && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.o -c /home/victor/aruco/utils_markermap/aruco_test_markermap.cpp
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.i"
-	cd /home/alantavares/aruco/build/utils_markermap && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alantavares/aruco/utils_markermap/aruco_test_markermap.cpp > CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.i
+	cd /home/victor/aruco/build/utils_markermap && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victor/aruco/utils_markermap/aruco_test_markermap.cpp > CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.i
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.s"
-	cd /home/alantavares/aruco/build/utils_markermap && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alantavares/aruco/utils_markermap/aruco_test_markermap.cpp -o CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.s
+	cd /home/victor/aruco/build/utils_markermap && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victor/aruco/utils_markermap/aruco_test_markermap.cpp -o CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.s
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.o.requires:
 
@@ -83,16 +83,16 @@ utils_markermap/CMakeFiles/aruco_test_markermap.dir/aruco_test_markermap.cpp.o.p
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.o: utils_markermap/CMakeFiles/aruco_test_markermap.dir/flags.make
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.o: ../utils_markermap/pcdwriter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object utils_markermap/CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.o"
-	cd /home/alantavares/aruco/build/utils_markermap && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.o -c /home/alantavares/aruco/utils_markermap/pcdwriter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object utils_markermap/CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.o"
+	cd /home/victor/aruco/build/utils_markermap && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.o -c /home/victor/aruco/utils_markermap/pcdwriter.cpp
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.i"
-	cd /home/alantavares/aruco/build/utils_markermap && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alantavares/aruco/utils_markermap/pcdwriter.cpp > CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.i
+	cd /home/victor/aruco/build/utils_markermap && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victor/aruco/utils_markermap/pcdwriter.cpp > CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.i
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.s"
-	cd /home/alantavares/aruco/build/utils_markermap && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alantavares/aruco/utils_markermap/pcdwriter.cpp -o CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.s
+	cd /home/victor/aruco/build/utils_markermap && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victor/aruco/utils_markermap/pcdwriter.cpp -o CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.s
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/pcdwriter.cpp.o.requires:
 
@@ -126,8 +126,8 @@ utils_markermap/aruco_test_markermap: /opt/ros/kinetic/lib/x86_64-linux-gnu/libo
 utils_markermap/aruco_test_markermap: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgproc3.so.3.3.1
 utils_markermap/aruco_test_markermap: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_core3.so.3.3.1
 utils_markermap/aruco_test_markermap: utils_markermap/CMakeFiles/aruco_test_markermap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable aruco_test_markermap"
-	cd /home/alantavares/aruco/build/utils_markermap && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aruco_test_markermap.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable aruco_test_markermap"
+	cd /home/victor/aruco/build/utils_markermap && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aruco_test_markermap.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/build: utils_markermap/aruco_test_markermap
@@ -140,10 +140,10 @@ utils_markermap/CMakeFiles/aruco_test_markermap.dir/requires: utils_markermap/CM
 .PHONY : utils_markermap/CMakeFiles/aruco_test_markermap.dir/requires
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/clean:
-	cd /home/alantavares/aruco/build/utils_markermap && $(CMAKE_COMMAND) -P CMakeFiles/aruco_test_markermap.dir/cmake_clean.cmake
+	cd /home/victor/aruco/build/utils_markermap && $(CMAKE_COMMAND) -P CMakeFiles/aruco_test_markermap.dir/cmake_clean.cmake
 .PHONY : utils_markermap/CMakeFiles/aruco_test_markermap.dir/clean
 
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/depend:
-	cd /home/alantavares/aruco/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alantavares/aruco /home/alantavares/aruco/utils_markermap /home/alantavares/aruco/build /home/alantavares/aruco/build/utils_markermap /home/alantavares/aruco/build/utils_markermap/CMakeFiles/aruco_test_markermap.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/victor/aruco/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victor/aruco /home/victor/aruco/utils_markermap /home/victor/aruco/build /home/victor/aruco/build/utils_markermap /home/victor/aruco/build/utils_markermap/CMakeFiles/aruco_test_markermap.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : utils_markermap/CMakeFiles/aruco_test_markermap.dir/depend
 

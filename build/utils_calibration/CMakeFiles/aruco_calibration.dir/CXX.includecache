@@ -824,11 +824,11 @@ map
 opencv2/core/core.hpp
 -
 
-/home/alantavares/aruco/utils_calibration/aruco_calibration.cpp
+/home/victor/aruco/utils_calibration/aruco_calibration.cpp
 aruco.h
-/home/alantavares/aruco/utils_calibration/aruco.h
+/home/victor/aruco/utils_calibration/aruco.h
 calibrator.h
-/home/alantavares/aruco/utils_calibration/calibrator.h
+/home/victor/aruco/utils_calibration/calibrator.h
 fstream
 -
 iostream
@@ -842,27 +842,27 @@ opencv2/imgproc/imgproc.hpp
 sstream
 -
 
-/home/alantavares/aruco/utils_calibration/calibrator.cpp
+/home/victor/aruco/utils_calibration/calibrator.cpp
 markermap.h
-/home/alantavares/aruco/utils_calibration/markermap.h
+/home/victor/aruco/utils_calibration/markermap.h
 calibrator.h
-/home/alantavares/aruco/utils_calibration/calibrator.h
+/home/victor/aruco/utils_calibration/calibrator.h
 levmarq.h
-/home/alantavares/aruco/utils_calibration/levmarq.h
+/home/victor/aruco/utils_calibration/levmarq.h
 opencv2/calib3d/calib3d.hpp
 -
 
-/home/alantavares/aruco/utils_calibration/calibrator.h
+/home/victor/aruco/utils_calibration/calibrator.h
 string
 -
 vector
 -
 marker.h
-/home/alantavares/aruco/utils_calibration/marker.h
+/home/victor/aruco/utils_calibration/marker.h
 markermap.h
-/home/alantavares/aruco/utils_calibration/markermap.h
+/home/victor/aruco/utils_calibration/markermap.h
 cameraparameters.h
-/home/alantavares/aruco/utils_calibration/cameraparameters.h
+/home/victor/aruco/utils_calibration/cameraparameters.h
 thread
 -
 mutex

@@ -108,9 +108,9 @@ map
 opencv2/core/core.hpp
 -
 
-/home/alantavares/aruco/utils/aruco_print_marker.cpp
+/home/victor/aruco/utils/aruco_print_marker.cpp
 aruco.h
-/home/alantavares/aruco/utils/aruco.h
+/home/victor/aruco/utils/aruco.h
 iostream
 -
 opencv2/highgui/highgui.hpp

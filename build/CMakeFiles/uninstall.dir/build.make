@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alantavares/aruco
+CMAKE_SOURCE_DIR = /home/victor/aruco
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alantavares/aruco/build
+CMAKE_BINARY_DIR = /home/victor/aruco/build
 
 # Utility rule file for uninstall.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/alantavares/aruco/build
 include CMakeFiles/uninstall.dir/progress.make
 
 CMakeFiles/uninstall:
-	/usr/bin/cmake -P /home/alantavares/aruco/build/cmake_uninstall.cmake
+	/usr/bin/cmake -P /home/victor/aruco/build/cmake_uninstall.cmake
 
 uninstall: CMakeFiles/uninstall
 uninstall: CMakeFiles/uninstall.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/alantavares/aruco/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alantavares/aruco /home/alantavares/aruco /home/alantavares/aruco/build /home/alantavares/aruco/build /home/alantavares/aruco/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/victor/aruco/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victor/aruco /home/victor/aruco /home/victor/aruco/build /home/victor/aruco/build /home/victor/aruco/build/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

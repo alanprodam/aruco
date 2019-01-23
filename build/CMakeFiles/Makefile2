@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alantavares/aruco
+CMAKE_SOURCE_DIR = /home/victor/aruco
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alantavares/aruco/build
+CMAKE_BINARY_DIR = /home/victor/aruco/build
 
 #=============================================================================
 # Target rules for target CMakeFiles/uninstall.dir
@@ -66,14 +66,14 @@ CMAKE_BINARY_DIR = /home/alantavares/aruco/build
 CMakeFiles/uninstall.dir/all:
 	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/depend
 	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num= "Built target uninstall"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num= "Built target uninstall"
 .PHONY : CMakeFiles/uninstall.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/uninstall.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/uninstall.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -116,7 +116,7 @@ src/preinstall:
 src/CMakeFiles/aruco.dir/all:
 	$(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/depend
 	$(MAKE) -f src/CMakeFiles/aruco.dir/build.make src/CMakeFiles/aruco.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17 "Built target aruco"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13,14,15,16,17 "Built target aruco"
 .PHONY : src/CMakeFiles/aruco.dir/all
 
 # Include target in all.
@@ -126,9 +126,9 @@ all: src/CMakeFiles/aruco.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/aruco.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/aruco.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/aruco.dir/rule
 
 # Convenience name for target.
@@ -191,7 +191,7 @@ utils/preinstall:
 utils/CMakeFiles/aruco_batch_processing.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/aruco_batch_processing.dir/build.make utils/CMakeFiles/aruco_batch_processing.dir/depend
 	$(MAKE) -f utils/CMakeFiles/aruco_batch_processing.dir/build.make utils/CMakeFiles/aruco_batch_processing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=18,19 "Built target aruco_batch_processing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=18,19 "Built target aruco_batch_processing"
 .PHONY : utils/CMakeFiles/aruco_batch_processing.dir/all
 
 # Include target in all.
@@ -201,9 +201,9 @@ all: utils/CMakeFiles/aruco_batch_processing.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/aruco_batch_processing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/aruco_batch_processing.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/aruco_batch_processing.dir/rule
 
 # Convenience name for target.
@@ -228,7 +228,7 @@ clean: utils/CMakeFiles/aruco_batch_processing.dir/clean
 utils/CMakeFiles/aruco_print_marker.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/aruco_print_marker.dir/build.make utils/CMakeFiles/aruco_print_marker.dir/depend
 	$(MAKE) -f utils/CMakeFiles/aruco_print_marker.dir/build.make utils/CMakeFiles/aruco_print_marker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=35,36 "Built target aruco_print_marker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=35,36 "Built target aruco_print_marker"
 .PHONY : utils/CMakeFiles/aruco_print_marker.dir/all
 
 # Include target in all.
@@ -238,9 +238,9 @@ all: utils/CMakeFiles/aruco_print_marker.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/aruco_print_marker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/aruco_print_marker.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/aruco_print_marker.dir/rule
 
 # Convenience name for target.
@@ -265,7 +265,7 @@ clean: utils/CMakeFiles/aruco_print_marker.dir/clean
 utils/CMakeFiles/aruco_print_dictionary.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/aruco_print_dictionary.dir/build.make utils/CMakeFiles/aruco_print_dictionary.dir/depend
 	$(MAKE) -f utils/CMakeFiles/aruco_print_dictionary.dir/build.make utils/CMakeFiles/aruco_print_dictionary.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=33,34 "Built target aruco_print_dictionary"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=33,34 "Built target aruco_print_dictionary"
 .PHONY : utils/CMakeFiles/aruco_print_dictionary.dir/all
 
 # Include target in all.
@@ -275,9 +275,9 @@ all: utils/CMakeFiles/aruco_print_dictionary.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/aruco_print_dictionary.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/aruco_print_dictionary.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/aruco_print_dictionary.dir/rule
 
 # Convenience name for target.
@@ -302,7 +302,7 @@ clean: utils/CMakeFiles/aruco_print_dictionary.dir/clean
 utils/CMakeFiles/aruco_imagem.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/aruco_imagem.dir/build.make utils/CMakeFiles/aruco_imagem.dir/depend
 	$(MAKE) -f utils/CMakeFiles/aruco_imagem.dir/build.make utils/CMakeFiles/aruco_imagem.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=29,30 "Built target aruco_imagem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=29,30 "Built target aruco_imagem"
 .PHONY : utils/CMakeFiles/aruco_imagem.dir/all
 
 # Include target in all.
@@ -312,9 +312,9 @@ all: utils/CMakeFiles/aruco_imagem.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/aruco_imagem.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/aruco_imagem.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/aruco_imagem.dir/rule
 
 # Convenience name for target.
@@ -339,7 +339,7 @@ clean: utils/CMakeFiles/aruco_imagem.dir/clean
 utils/CMakeFiles/aruco_test.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/aruco_test.dir/build.make utils/CMakeFiles/aruco_test.dir/depend
 	$(MAKE) -f utils/CMakeFiles/aruco_test.dir/build.make utils/CMakeFiles/aruco_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=41,42 "Built target aruco_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=41,42 "Built target aruco_test"
 .PHONY : utils/CMakeFiles/aruco_test.dir/all
 
 # Include target in all.
@@ -349,9 +349,9 @@ all: utils/CMakeFiles/aruco_test.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/aruco_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/aruco_test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/aruco_test.dir/rule
 
 # Convenience name for target.
@@ -376,7 +376,7 @@ clean: utils/CMakeFiles/aruco_test.dir/clean
 utils/CMakeFiles/SearchMovement.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/SearchMovement.dir/build.make utils/CMakeFiles/SearchMovement.dir/depend
 	$(MAKE) -f utils/CMakeFiles/SearchMovement.dir/build.make utils/CMakeFiles/SearchMovement.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=3,4 "Built target SearchMovement"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=3,4 "Built target SearchMovement"
 .PHONY : utils/CMakeFiles/SearchMovement.dir/all
 
 # Include target in all.
@@ -386,9 +386,9 @@ all: utils/CMakeFiles/SearchMovement.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/SearchMovement.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/SearchMovement.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/SearchMovement.dir/rule
 
 # Convenience name for target.
@@ -413,7 +413,7 @@ clean: utils/CMakeFiles/SearchMovement.dir/clean
 utils/CMakeFiles/MotionTracking.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/MotionTracking.dir/build.make utils/CMakeFiles/MotionTracking.dir/depend
 	$(MAKE) -f utils/CMakeFiles/MotionTracking.dir/build.make utils/CMakeFiles/MotionTracking.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=1,2 "Built target MotionTracking"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=1,2 "Built target MotionTracking"
 .PHONY : utils/CMakeFiles/MotionTracking.dir/all
 
 # Include target in all.
@@ -423,9 +423,9 @@ all: utils/CMakeFiles/MotionTracking.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/MotionTracking.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/MotionTracking.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/MotionTracking.dir/rule
 
 # Convenience name for target.
@@ -450,7 +450,7 @@ clean: utils/CMakeFiles/MotionTracking.dir/clean
 utils/CMakeFiles/aruco_estimate_position.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/aruco_estimate_position.dir/build.make utils/CMakeFiles/aruco_estimate_position.dir/depend
 	$(MAKE) -f utils/CMakeFiles/aruco_estimate_position.dir/build.make utils/CMakeFiles/aruco_estimate_position.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=27,28 "Built target aruco_estimate_position"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=27,28 "Built target aruco_estimate_position"
 .PHONY : utils/CMakeFiles/aruco_estimate_position.dir/all
 
 # Include target in all.
@@ -460,9 +460,9 @@ all: utils/CMakeFiles/aruco_estimate_position.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/aruco_estimate_position.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/aruco_estimate_position.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/aruco_estimate_position.dir/rule
 
 # Convenience name for target.
@@ -487,7 +487,7 @@ clean: utils/CMakeFiles/aruco_estimate_position.dir/clean
 utils/CMakeFiles/aruco_video.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/aruco_video.dir/build.make utils/CMakeFiles/aruco_video.dir/depend
 	$(MAKE) -f utils/CMakeFiles/aruco_video.dir/build.make utils/CMakeFiles/aruco_video.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=50,51 "Built target aruco_video"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=50,51 "Built target aruco_video"
 .PHONY : utils/CMakeFiles/aruco_video.dir/all
 
 # Include target in all.
@@ -497,9 +497,9 @@ all: utils/CMakeFiles/aruco_video.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/aruco_video.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/aruco_video.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/aruco_video.dir/rule
 
 # Convenience name for target.
@@ -524,7 +524,7 @@ clean: utils/CMakeFiles/aruco_video.dir/clean
 utils/CMakeFiles/aruco_tracker.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/aruco_tracker.dir/build.make utils/CMakeFiles/aruco_tracker.dir/depend
 	$(MAKE) -f utils/CMakeFiles/aruco_tracker.dir/build.make utils/CMakeFiles/aruco_tracker.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=48,49 "Built target aruco_tracker"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=48,49 "Built target aruco_tracker"
 .PHONY : utils/CMakeFiles/aruco_tracker.dir/all
 
 # Include target in all.
@@ -534,9 +534,9 @@ all: utils/CMakeFiles/aruco_tracker.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/aruco_tracker.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/aruco_tracker.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/aruco_tracker.dir/rule
 
 # Convenience name for target.
@@ -561,7 +561,7 @@ clean: utils/CMakeFiles/aruco_tracker.dir/clean
 utils/CMakeFiles/aruco_simple.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils/CMakeFiles/aruco_simple.dir/build.make utils/CMakeFiles/aruco_simple.dir/depend
 	$(MAKE) -f utils/CMakeFiles/aruco_simple.dir/build.make utils/CMakeFiles/aruco_simple.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=37,38 "Built target aruco_simple"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=37,38 "Built target aruco_simple"
 .PHONY : utils/CMakeFiles/aruco_simple.dir/all
 
 # Include target in all.
@@ -571,9 +571,9 @@ all: utils/CMakeFiles/aruco_simple.dir/all
 
 # Build rule for subdir invocation for target.
 utils/CMakeFiles/aruco_simple.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils/CMakeFiles/aruco_simple.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils/CMakeFiles/aruco_simple.dir/rule
 
 # Convenience name for target.
@@ -622,7 +622,7 @@ utils_markermap/preinstall:
 utils_markermap/CMakeFiles/aruco_simple_markermap.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils_markermap/CMakeFiles/aruco_simple_markermap.dir/build.make utils_markermap/CMakeFiles/aruco_simple_markermap.dir/depend
 	$(MAKE) -f utils_markermap/CMakeFiles/aruco_simple_markermap.dir/build.make utils_markermap/CMakeFiles/aruco_simple_markermap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=39,40 "Built target aruco_simple_markermap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=39,40 "Built target aruco_simple_markermap"
 .PHONY : utils_markermap/CMakeFiles/aruco_simple_markermap.dir/all
 
 # Include target in all.
@@ -632,9 +632,9 @@ all: utils_markermap/CMakeFiles/aruco_simple_markermap.dir/all
 
 # Build rule for subdir invocation for target.
 utils_markermap/CMakeFiles/aruco_simple_markermap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils_markermap/CMakeFiles/aruco_simple_markermap.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils_markermap/CMakeFiles/aruco_simple_markermap.dir/rule
 
 # Convenience name for target.
@@ -659,7 +659,7 @@ clean: utils_markermap/CMakeFiles/aruco_simple_markermap.dir/clean
 utils_markermap/CMakeFiles/aruco_create_markermap.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils_markermap/CMakeFiles/aruco_create_markermap.dir/build.make utils_markermap/CMakeFiles/aruco_create_markermap.dir/depend
 	$(MAKE) -f utils_markermap/CMakeFiles/aruco_create_markermap.dir/build.make utils_markermap/CMakeFiles/aruco_create_markermap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=25,26 "Built target aruco_create_markermap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=25,26 "Built target aruco_create_markermap"
 .PHONY : utils_markermap/CMakeFiles/aruco_create_markermap.dir/all
 
 # Include target in all.
@@ -669,9 +669,9 @@ all: utils_markermap/CMakeFiles/aruco_create_markermap.dir/all
 
 # Build rule for subdir invocation for target.
 utils_markermap/CMakeFiles/aruco_create_markermap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils_markermap/CMakeFiles/aruco_create_markermap.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils_markermap/CMakeFiles/aruco_create_markermap.dir/rule
 
 # Convenience name for target.
@@ -696,7 +696,7 @@ clean: utils_markermap/CMakeFiles/aruco_create_markermap.dir/clean
 utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/build.make utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/depend
 	$(MAKE) -f utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/build.make utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=31,32 "Built target aruco_markermap_pix2meters"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=31,32 "Built target aruco_markermap_pix2meters"
 .PHONY : utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/all
 
 # Include target in all.
@@ -706,9 +706,9 @@ all: utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/all
 
 # Build rule for subdir invocation for target.
 utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/rule
 
 # Convenience name for target.
@@ -733,7 +733,7 @@ clean: utils_markermap/CMakeFiles/aruco_markermap_pix2meters.dir/clean
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils_markermap/CMakeFiles/aruco_test_markermap.dir/build.make utils_markermap/CMakeFiles/aruco_test_markermap.dir/depend
 	$(MAKE) -f utils_markermap/CMakeFiles/aruco_test_markermap.dir/build.make utils_markermap/CMakeFiles/aruco_test_markermap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=43,44,45 "Built target aruco_test_markermap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=43,44,45 "Built target aruco_test_markermap"
 .PHONY : utils_markermap/CMakeFiles/aruco_test_markermap.dir/all
 
 # Include target in all.
@@ -743,9 +743,9 @@ all: utils_markermap/CMakeFiles/aruco_test_markermap.dir/all
 
 # Build rule for subdir invocation for target.
 utils_markermap/CMakeFiles/aruco_test_markermap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 utils_markermap/CMakeFiles/aruco_test_markermap.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils_markermap/CMakeFiles/aruco_test_markermap.dir/rule
 
 # Convenience name for target.
@@ -790,7 +790,7 @@ utils_calibration/preinstall:
 utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/depend
 	$(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build.make utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=23,24 "Built target aruco_calibration_fromimages"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=23,24 "Built target aruco_calibration_fromimages"
 .PHONY : utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/all
 
 # Include target in all.
@@ -800,9 +800,9 @@ all: utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/all
 
 # Build rule for subdir invocation for target.
 utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/rule
 
 # Convenience name for target.
@@ -827,7 +827,7 @@ clean: utils_calibration/CMakeFiles/aruco_calibration_fromimages.dir/clean
 utils_calibration/CMakeFiles/aruco_calibration.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/depend
 	$(MAKE) -f utils_calibration/CMakeFiles/aruco_calibration.dir/build.make utils_calibration/CMakeFiles/aruco_calibration.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=20,21,22 "Built target aruco_calibration"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=20,21,22 "Built target aruco_calibration"
 .PHONY : utils_calibration/CMakeFiles/aruco_calibration.dir/all
 
 # Include target in all.
@@ -837,9 +837,9 @@ all: utils_calibration/CMakeFiles/aruco_calibration.dir/all
 
 # Build rule for subdir invocation for target.
 utils_calibration/CMakeFiles/aruco_calibration.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 utils_calibration/CMakeFiles/aruco_calibration.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils_calibration/CMakeFiles/aruco_calibration.dir/rule
 
 # Convenience name for target.
@@ -882,7 +882,7 @@ utils_svm/preinstall:
 utils_svm/CMakeFiles/aruco_test_svm.dir/all: src/CMakeFiles/aruco.dir/all
 	$(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/depend
 	$(MAKE) -f utils_svm/CMakeFiles/aruco_test_svm.dir/build.make utils_svm/CMakeFiles/aruco_test_svm.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=46,47 "Built target aruco_test_svm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=46,47 "Built target aruco_test_svm"
 .PHONY : utils_svm/CMakeFiles/aruco_test_svm.dir/all
 
 # Include target in all.
@@ -892,9 +892,9 @@ all: utils_svm/CMakeFiles/aruco_test_svm.dir/all
 
 # Build rule for subdir invocation for target.
 utils_svm/CMakeFiles/aruco_test_svm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 15
 	$(MAKE) -f CMakeFiles/Makefile2 utils_svm/CMakeFiles/aruco_test_svm.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/alantavares/aruco/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/victor/aruco/build/CMakeFiles 0
 .PHONY : utils_svm/CMakeFiles/aruco_test_svm.dir/rule
 
 # Convenience name for target.

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alantavares/aruco
+CMAKE_SOURCE_DIR = /home/victor/aruco
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alantavares/aruco/build
+CMAKE_BINARY_DIR = /home/victor/aruco/build
 
 # Include any dependencies generated for this target.
 include utils_calibration/CMakeFiles/aruco_calibration.dir/depend.make
@@ -59,16 +59,16 @@ include utils_calibration/CMakeFiles/aruco_calibration.dir/flags.make
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o: utils_calibration/CMakeFiles/aruco_calibration.dir/flags.make
 utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o: ../utils_calibration/aruco_calibration.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o"
-	cd /home/alantavares/aruco/build/utils_calibration && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o -c /home/alantavares/aruco/utils_calibration/aruco_calibration.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o"
+	cd /home/victor/aruco/build/utils_calibration && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o -c /home/victor/aruco/utils_calibration/aruco_calibration.cpp
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.i"
-	cd /home/alantavares/aruco/build/utils_calibration && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alantavares/aruco/utils_calibration/aruco_calibration.cpp > CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.i
+	cd /home/victor/aruco/build/utils_calibration && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victor/aruco/utils_calibration/aruco_calibration.cpp > CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.i
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.s"
-	cd /home/alantavares/aruco/build/utils_calibration && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alantavares/aruco/utils_calibration/aruco_calibration.cpp -o CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.s
+	cd /home/victor/aruco/build/utils_calibration && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victor/aruco/utils_calibration/aruco_calibration.cpp -o CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.s
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o.requires:
 
@@ -83,16 +83,16 @@ utils_calibration/CMakeFiles/aruco_calibration.dir/aruco_calibration.cpp.o.provi
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.o: utils_calibration/CMakeFiles/aruco_calibration.dir/flags.make
 utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.o: ../utils_calibration/calibrator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.o"
-	cd /home/alantavares/aruco/build/utils_calibration && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco_calibration.dir/calibrator.cpp.o -c /home/alantavares/aruco/utils_calibration/calibrator.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.o"
+	cd /home/victor/aruco/build/utils_calibration && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/aruco_calibration.dir/calibrator.cpp.o -c /home/victor/aruco/utils_calibration/calibrator.cpp
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/aruco_calibration.dir/calibrator.cpp.i"
-	cd /home/alantavares/aruco/build/utils_calibration && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alantavares/aruco/utils_calibration/calibrator.cpp > CMakeFiles/aruco_calibration.dir/calibrator.cpp.i
+	cd /home/victor/aruco/build/utils_calibration && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/victor/aruco/utils_calibration/calibrator.cpp > CMakeFiles/aruco_calibration.dir/calibrator.cpp.i
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/aruco_calibration.dir/calibrator.cpp.s"
-	cd /home/alantavares/aruco/build/utils_calibration && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alantavares/aruco/utils_calibration/calibrator.cpp -o CMakeFiles/aruco_calibration.dir/calibrator.cpp.s
+	cd /home/victor/aruco/build/utils_calibration && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/victor/aruco/utils_calibration/calibrator.cpp -o CMakeFiles/aruco_calibration.dir/calibrator.cpp.s
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/calibrator.cpp.o.requires:
 
@@ -126,8 +126,8 @@ utils_calibration/aruco_calibration: /opt/ros/kinetic/lib/x86_64-linux-gnu/libop
 utils_calibration/aruco_calibration: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_imgproc3.so.3.3.1
 utils_calibration/aruco_calibration: /opt/ros/kinetic/lib/x86_64-linux-gnu/libopencv_core3.so.3.3.1
 utils_calibration/aruco_calibration: utils_calibration/CMakeFiles/aruco_calibration.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alantavares/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable aruco_calibration"
-	cd /home/alantavares/aruco/build/utils_calibration && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aruco_calibration.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/victor/aruco/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable aruco_calibration"
+	cd /home/victor/aruco/build/utils_calibration && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aruco_calibration.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 utils_calibration/CMakeFiles/aruco_calibration.dir/build: utils_calibration/aruco_calibration
@@ -140,10 +140,10 @@ utils_calibration/CMakeFiles/aruco_calibration.dir/requires: utils_calibration/C
 .PHONY : utils_calibration/CMakeFiles/aruco_calibration.dir/requires
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/clean:
-	cd /home/alantavares/aruco/build/utils_calibration && $(CMAKE_COMMAND) -P CMakeFiles/aruco_calibration.dir/cmake_clean.cmake
+	cd /home/victor/aruco/build/utils_calibration && $(CMAKE_COMMAND) -P CMakeFiles/aruco_calibration.dir/cmake_clean.cmake
 .PHONY : utils_calibration/CMakeFiles/aruco_calibration.dir/clean
 
 utils_calibration/CMakeFiles/aruco_calibration.dir/depend:
-	cd /home/alantavares/aruco/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alantavares/aruco /home/alantavares/aruco/utils_calibration /home/alantavares/aruco/build /home/alantavares/aruco/build/utils_calibration /home/alantavares/aruco/build/utils_calibration/CMakeFiles/aruco_calibration.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/victor/aruco/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/victor/aruco /home/victor/aruco/utils_calibration /home/victor/aruco/build /home/victor/aruco/build/utils_calibration /home/victor/aruco/build/utils_calibration/CMakeFiles/aruco_calibration.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : utils_calibration/CMakeFiles/aruco_calibration.dir/depend
 

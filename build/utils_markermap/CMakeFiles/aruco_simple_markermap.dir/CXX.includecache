@@ -108,13 +108,13 @@ map
 opencv2/core/core.hpp
 -
 
-/home/alantavares/aruco/utils_markermap/aruco_simple_markermap.cpp
+/home/victor/aruco/utils_markermap/aruco_simple_markermap.cpp
 aruco.h
-/home/alantavares/aruco/utils_markermap/aruco.h
+/home/victor/aruco/utils_markermap/aruco.h
 cvdrawingutils.h
-/home/alantavares/aruco/utils_markermap/cvdrawingutils.h
+/home/victor/aruco/utils_markermap/cvdrawingutils.h
 posetracker.h
-/home/alantavares/aruco/utils_markermap/posetracker.h
+/home/victor/aruco/utils_markermap/posetracker.h
 fstream
 -
 iostream
