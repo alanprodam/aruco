@@ -172,11 +172,10 @@ int main()
                     //     "\tRy: " << TheMarkers[i].Rvec.ptr<float>(1)[0] << " Max.Rot "<<
                     //     "\tRz: " << TheMarkers[i].Rvec.ptr<float>(2)[0] << " Max.Rot "<<   
 
-
+                    // crete a matrix 3x3 with zeros
                     Eigen::Matrix3d m = Eigen::Matrix3d::Zero(3,3);
 
-
-                    // improve the estimation rvec
+                    // improve the estimation rvec (1x3) or (3x1)
                     cv::Mat Rvec64;
                     TheMarkers[i].Rvec.convertTo(Rvec64, CV_64FC1);
                     cout << " Rvec64 " << Rvec64 << endl;
@@ -184,12 +183,15 @@ int main()
 
                     // create rot matrix
                     cv::Mat rot(3, 3, CV_64FC1);
+                    
+                    // converts a rotation matrix to a rotation vector or vice versa
+                    // this case, converts the rotation vector 'Rvec64' to a rotation matrix 'rot' - https://docs.opencv.org/3.4/d9/d0c/group__calib3d.html
                     cv::Rodrigues(Rvec64, rot);
                     cout << " rot " << rot << endl;
                     cout << " ------------------------------------- " << endl;
-
+                    
+                    // create the vector euler by the function that convert rotation matrix to euler angles
                     Vec3f euler = rotationMatrixToEulerAngles(rot);
-     
                     cout << " euler " << euler << " rad " << endl;
                     cout << " ------------------------------------- " << endl;
 
